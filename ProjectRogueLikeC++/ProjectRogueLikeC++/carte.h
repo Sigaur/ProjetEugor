@@ -17,8 +17,9 @@ public:
 	bool inBound(int x1, int y1);
 	void pushingBack(std::vector<Tile> &vec, Tile tile);
 	void swapping(int &x1, int &x2);
+	std::string Carte::roomTypeGenerator(int &x1, int &y1, int &x2, int &y2, std::string from);
 
-	void roomTest(int paraX, int paraY, int corrX, int corrY);
+	void roomTest(int paraX, int paraY, int corrX, int corrY, std::string from);
 	void corridorTest(int paraX, int paraY, int corrX, int corrY, bool vertical);
 	void dungeonTest();
 private:
@@ -26,6 +27,7 @@ private:
 	int no_of_cols;
 	int no_of_rows;
 	std::vector<Tile> wallConstructible;
+	int compteurDebug;
 };
 	
 

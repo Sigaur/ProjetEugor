@@ -12,7 +12,7 @@ void tileDisplay(Tile tile)
 	{
 		shape.setFillColor(sf::Color::White);
 	}
-	if (tile.getX() == 25 && tile.getY() == 25)
+	if (tile.getX() == 50 && tile.getY() == 50)
 	{
 		shape.setFillColor(sf::Color::Green);
 	}

@@ -1,7 +1,7 @@
 #include "carte.h"
 #include "common.h"
 
-sf::RenderWindow window(sf::VideoMode(500, 500), "SFML works!");
+sf::RenderWindow window(sf::VideoMode(1000, 1000), "SFML works!");
 
 int main()
 {
