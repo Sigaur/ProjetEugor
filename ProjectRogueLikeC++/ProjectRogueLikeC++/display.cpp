@@ -12,9 +12,9 @@ void tileDisplay(Tile tile)
 	{
 		shape.setFillColor(sf::Color::White);
 	}
-	if (tile.getX() == 50 && tile.getY() == 50)
+	if (tile.getX() == 25 && tile.getY() == 25)
 	{
-		shape.setFillColor(sf::Color::Green);
+		//shape.setFillColor(sf::Color::Green);
 	}
 	else if (tile.getId() == 3)
 	{
@@ -24,5 +24,14 @@ void tileDisplay(Tile tile)
 	{
 		shape.setFillColor(sf::Color::Blue);
 	}
+	window.draw(shape);
+}
+
+void entityDisplay(Entity entity)
+{	
+	sf::CircleShape shape(5.f);
+	shape.setPosition((float)(entity.getPosX() * 10.f), (float)(entity.getPosY() * 10.f));
+	std::cout << "test" << shape.getPosition().x << "  " << shape.getPosition().x << std::endl;
+	shape.setFillColor(sf::Color::Green);
 	window.draw(shape);
 }

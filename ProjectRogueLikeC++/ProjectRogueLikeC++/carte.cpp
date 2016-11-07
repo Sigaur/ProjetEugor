@@ -2,8 +2,8 @@
 
 Carte::Carte()
 {
-	this->no_of_cols = 100;
-	this->no_of_rows = 100;
+	this->no_of_cols = 50;
+	this->no_of_rows = 50;
 
 	this->m_matrix.resize(no_of_rows, std::vector<Tile>(no_of_cols));
 }
@@ -412,7 +412,7 @@ void Carte::dungeonTest()
 		//wallConstructible.push_back(this->m_matrix[x2][j]);
 	}
 	
-	for (int i = 0; i < 500; i++)
+	for (int i = 0; i < 1000; i++)
 	{
 		random = rand() % wallConstructible.size();
 		exitX = wallConstructible[random].getX();
