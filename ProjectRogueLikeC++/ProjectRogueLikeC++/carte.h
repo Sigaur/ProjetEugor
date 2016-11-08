@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
-#include "tile.h"
-#include "display.h"
+#include "Tile.h"
+#include "Display.h"
 
 class Carte {
 public:
@@ -13,6 +13,7 @@ public:
 	void fulling(int x1, int y1, int x2, int y2);
 	void digging(int x1, int y1, int x2, int y2);
 	bool isFull(int x1, int y1, int x2, int y2);
+	bool isWalkable(int x1, int y1);
 	bool inBound(int x1, int y1, int x2, int y2);
 	bool inBound(int x1, int y1);
 	void pushingBack(std::vector<Tile> &vec, Tile tile);

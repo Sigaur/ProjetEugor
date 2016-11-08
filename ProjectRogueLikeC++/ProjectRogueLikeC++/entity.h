@@ -1,5 +1,5 @@
 #pragma once
-#include "common.h"
+#include "Common.h"
 
 class Entity
 {
@@ -16,7 +16,7 @@ public:
 	std::string getName();
 	void setName(std::string name);
 
-private:
+protected:
 	int m_id;
 	std::string m_name;
 	int m_posX;

@@ -1,4 +1,4 @@
-#include "carte.h"
+#include "Carte.h"
 
 Carte::Carte()
 {
@@ -153,6 +153,11 @@ bool Carte::isFull(int x1, int y1, int x2, int y2)
 	return response;
 }
 
+bool Carte::isWalkable(int x1, int y1)
+{
+	return this->m_matrix[x1][y1].isWalkable();
+}
+
 std::string Carte::roomTypeGenerator(int &x1, int &y1, int &x2, int &y2, std::string from)
 {
 	int random = rand() % 10 + 1;
@@ -302,8 +307,8 @@ void Carte::roomTest(int paraX, int paraY, int corrX, int corrY, std::string fro
 			{
 				pushingBack(wallConstructible, this->m_matrix[i][y1]);
 				pushingBack(wallConstructible, this->m_matrix[i][y2]);
-				this->m_matrix[i][y1].set(0, 3);
-				this->m_matrix[i][y2].set(0, 3);
+				this->m_matrix[i][y1].set(1, 3);
+				this->m_matrix[i][y2].set(1, 3);
 				//wallConstructible.push_back(this->m_matrix[i][y1]);
 				//wallConstructible.push_back(this->m_matrix[i][y2]);
 			}
@@ -311,8 +316,8 @@ void Carte::roomTest(int paraX, int paraY, int corrX, int corrY, std::string fro
 			{
 				pushingBack(wallConstructible, this->m_matrix[x1][j]);
 				pushingBack(wallConstructible, this->m_matrix[x2][j]);
-				this->m_matrix[x1][j].set(0, 3);
-				this->m_matrix[x2][j].set(0, 3);
+				this->m_matrix[x1][j].set(1, 3);
+				this->m_matrix[x2][j].set(1, 3);
 				//wallConstructible.push_back(this->m_matrix[x1][j]);
 				//wallConstructible.push_back(this->m_matrix[x2][j]);
 			}
@@ -397,8 +402,8 @@ void Carte::dungeonTest()
 	{
 		pushingBack(wallConstructible, this->m_matrix[i][y1]);
 		pushingBack(wallConstructible, this->m_matrix[i][y2]);
-		this->m_matrix[i][y1].set(0, 3);
-		this->m_matrix[i][y2].set(0, 3);
+		this->m_matrix[i][y1].set(1, 3);
+		this->m_matrix[i][y2].set(1, 3);
 		//wallConstructible.push_back(this->m_matrix[i][y1]);
 		//wallConstructible.push_back(this->m_matrix[i][y2]);
 	}
@@ -406,8 +411,8 @@ void Carte::dungeonTest()
 	{
 		pushingBack(wallConstructible, this->m_matrix[x1][j]);
 		pushingBack(wallConstructible, this->m_matrix[x2][j]);
-		this->m_matrix[x1][j].set(0, 3);
-		this->m_matrix[x2][j].set(0, 3);
+		this->m_matrix[x1][j].set(1, 3);
+		this->m_matrix[x2][j].set(1, 3);
 		//wallConstructible.push_back(this->m_matrix[x1][j]);
 		//wallConstructible.push_back(this->m_matrix[x2][j]);
 	}

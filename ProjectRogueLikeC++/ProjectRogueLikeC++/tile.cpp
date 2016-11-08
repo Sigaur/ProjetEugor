@@ -1,9 +1,9 @@
-#include "tile.h"
+#include "Tile.h"
 
 
 Tile::Tile()
 {
-	this->m_walkable = 1;
+	this->m_walkable = 0;
 	this->m_id = 0;
 	this->m_x = 0;
 	this->m_y = 0;
@@ -64,6 +64,7 @@ bool Tile::isFull()
 void Tile::fulling()
 {
 	this->m_full = 1;
+	this->m_walkable = 0;
 }
 
 void Tile::digging()
@@ -73,4 +74,5 @@ void Tile::digging()
 		std::cout << "ERREUR" << std::endl;
 	}
 	this->m_full = 0;
+	this->m_walkable = 1;
 }

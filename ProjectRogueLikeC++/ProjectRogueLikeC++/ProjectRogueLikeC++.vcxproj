@@ -118,18 +118,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="carte.cpp" />
-    <ClCompile Include="display.cpp" />
-    <ClCompile Include="entity.cpp" />
+    <ClCompile Include="Carte.cpp" />
+    <ClCompile Include="Display.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="tile.cpp" />
+    <ClCompile Include="Movable.cpp" />
+    <ClCompile Include="Tile.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="carte.h" />
-    <ClInclude Include="common.h" />
-    <ClInclude Include="display.h" />
-    <ClInclude Include="entity.h" />
-    <ClInclude Include="tile.h" />
+    <ClInclude Include="Carte.h" />
+    <ClInclude Include="Common.h" />
+    <ClInclude Include="Display.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="Movable.h" />
+    <ClInclude Include="Tile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,3 +1,5 @@
-﻿  display.cpp
+﻿  main.cpp
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(11): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(9): warning C4101: 'action': unreferenced local variable
   ProjectRogueLikeC++.vcxproj -> C:\Users\Seven_8\Work\ProjetEugor\ProjectRogueLikeC++\Debug\ProjectRogueLikeC++.exe
   ProjectRogueLikeC++.vcxproj -> C:\Users\Seven_8\Work\ProjetEugor\ProjectRogueLikeC++\Debug\ProjectRogueLikeC++.pdb (Partial PDB)

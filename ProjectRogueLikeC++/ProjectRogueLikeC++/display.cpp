@@ -1,10 +1,10 @@
-#include "display.h"
+#include "Display.h"
 
 void tileDisplay(Tile tile)
 {
 	sf::CircleShape shape(5.f);
 	shape.setPosition((float) (tile.getX() * 10.f), (float) (tile.getY() * 10.f));
-	if (tile.isFull())
+	if (!tile.isWalkable())
 	{
 		shape.setFillColor(sf::Color::Red);
 	}
@@ -31,7 +31,15 @@ void entityDisplay(Entity entity)
 {	
 	sf::CircleShape shape(5.f);
 	shape.setPosition((float)(entity.getPosX() * 10.f), (float)(entity.getPosY() * 10.f));
-	std::cout << "test" << shape.getPosition().x << "  " << shape.getPosition().x << std::endl;
 	shape.setFillColor(sf::Color::Green);
 	window.draw(shape);
 }
+
+void entityDisplay(Movable entity)
+{
+	sf::CircleShape shape(5.f);
+	shape.setPosition((float)(entity.getPosX() * 10.f), (float)(entity.getPosY() * 10.f));
+	shape.setFillColor(sf::Color::Green);
+	window.draw(shape);
+}
+
