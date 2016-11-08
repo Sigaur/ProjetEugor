@@ -14,6 +14,10 @@ public:
 	void moveLeft();
 	void moveUp();
 	void moveDown();
+	void moveUpRight();
+	void moveUpLeft();
+	void moveDownRight();
+	void moveDownLeft();
 	void move(std::string mouvement);
 protected:
 	float m_speed;

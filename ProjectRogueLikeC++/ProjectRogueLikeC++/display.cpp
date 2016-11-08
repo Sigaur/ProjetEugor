@@ -32,6 +32,7 @@ void tileDisplay(Tile tile)
 	switch (tile.getType())
 	{
 	default:
+		shape.setFillColor(sf::Color::Magenta);
 		break;
 	case unknow:
 		shape.setFillColor(sf::Color::Black);
@@ -39,8 +40,17 @@ void tileDisplay(Tile tile)
 	case brickFloor:
 		shape.setFillColor(sf::Color::White);
 		break;
-	case door:
+	case door_closed:
+		shape.setFillColor(sf::Color::Red);
+		break;
+	case door_open:
 		shape.setFillColor(sf::Color::Blue);
+		break;
+	case stairsDown:
+		shape.setFillColor(sf::Color::Yellow);
+		break;
+	case stairsUp:
+		shape.setFillColor(sf::Color::Cyan);
 		break;
 	}
 	window.draw(shape);

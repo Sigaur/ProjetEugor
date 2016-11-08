@@ -4,17 +4,15 @@
 Tile::Tile()
 {
 	this->m_walkable = 0;
-	this->m_id = 0;
 	this->m_x = 0;
 	this->m_y = 0;
 	this->m_full = 1;
 	this->m_type = unknow;
 }
 
-Tile::Tile(int walk, int id, int x, int y)
+Tile::Tile(int walk, int x, int y)
 {
 	this->m_walkable = walk;
-	this->m_id = id;
 	this->m_x = x;
 	this->m_y = y;
 	this->m_type = unknow;
@@ -24,23 +22,42 @@ Tile::~Tile()
 {
 }
 
+bool Tile::walking()///MANAGING INTERACTIONS WITH NON MOVABLE OBJECTS
+{
+	if (this->m_type == door_closed)
+	{
+		this->openDoor();
+		return 0;
+	}
+	else
+	{
+		return this->isWalkable();
+	}
+}
+
 bool Tile::isWalkable()
 {
 	return this->m_walkable;
 }
 
-void Tile::set(int walk, int id, int x, int y)
+void Tile::openDoor()
+{
+	if (this->m_type == door_closed)
+	{
+		this->setType(door_open);
+	}
+}
+
+void Tile::set(int walk, int x, int y)
 {
 	this->m_walkable = walk;
-	this->m_id = id;
 	this->m_x = x;
 	this->m_y = y;
 }
 
-void Tile::set(int walk, int id)
+void Tile::set(int walk)
 {
 	this->m_walkable = walk;
-	this->m_id = id;
 }
 
 int Tile::getX()
@@ -51,11 +68,6 @@ int Tile::getX()
 int Tile::getY()
 {
 	return this->m_y;
-}
-
-int Tile::getId()
-{
-	return this->m_id;
 }
 
 bool Tile::isFull()
@@ -82,6 +94,27 @@ void Tile::digging()
 void Tile::setType(tileType type)
 {
 	this->m_type = type;
+	switch (m_type)
+	{
+	case unknow:
+		this->set(0);
+		break;
+	case brickFloor:
+		this->set(1);
+		break;
+	case door_open:
+		this->set(1);
+		break;
+	case stairsDown:
+		this->set(1);
+		break;
+	case stairsUp:
+		this->set(1);
+		break;
+	default:
+		this->set(0);
+		break;
+	}
 }
 
 tileType Tile::getType()

@@ -62,6 +62,46 @@ void Movable::moveDown()
 	}
 }
 
+void Movable::moveUpRight()
+{
+	//if (clock() - this->m_lastAction > (float)(this->m_speed * 100.f))
+	{
+		this->m_posY--;
+		this->m_posX++;
+		//this->m_lastAction = clock();
+	}
+}
+
+void Movable::moveUpLeft()
+{
+	//if (clock() - this->m_lastAction > (float)(this->m_speed * 100.f))
+	{
+		this->m_posY--;
+		this->m_posX--;
+		//this->m_lastAction = clock();
+	}
+}
+
+void Movable::moveDownRight()
+{
+	//if (clock() - this->m_lastAction > (float)(this->m_speed * 100.f))
+	{
+		this->m_posY++;
+		this->m_posX++;
+		//this->m_lastAction = clock();
+	}
+}
+
+void Movable::moveDownLeft()
+{
+	//if (clock() - this->m_lastAction > (float)(this->m_speed * 100.f))
+	{
+		this->m_posY++;
+		this->m_posX--;
+		//this->m_lastAction = clock();
+	}
+}
+
 void Movable::move(std::string mouvement)
 {
 	if (mouvement == "right")
@@ -79,5 +119,21 @@ void Movable::move(std::string mouvement)
 	else if (mouvement == "down")
 	{
 		this->moveDown();
+	}
+	else if (mouvement == "upRight")
+	{
+		this->moveUpRight();
+	}
+	else if (mouvement == "upLeft")
+	{
+		this->moveUpLeft();
+	}
+	else if (mouvement == "downRight")
+	{
+		this->moveDownRight();
+	}
+	else if (mouvement == "downLeft")
+	{
+		this->moveDownLeft();
 	}
 }

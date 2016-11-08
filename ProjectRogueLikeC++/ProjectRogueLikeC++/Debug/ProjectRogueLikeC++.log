@@ -1,3 +1,7 @@
-﻿  Display.cpp
+﻿  main.cpp
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\common.h(22): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(10): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(57): warning C4018: '>=': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(8): warning C4101: 'action': unreferenced local variable
   ProjectRogueLikeC++.vcxproj -> C:\Users\Seven_8\Work\ProjetEugor\ProjectRogueLikeC++\Debug\ProjectRogueLikeC++.exe
   ProjectRogueLikeC++.vcxproj -> C:\Users\Seven_8\Work\ProjetEugor\ProjectRogueLikeC++\Debug\ProjectRogueLikeC++.pdb (Partial PDB)

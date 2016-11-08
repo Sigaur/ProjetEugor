@@ -10,5 +10,13 @@ enum tileType
 {
 	unknow,
 	brickFloor,
-	door
+	door_closed,
+	door_open,
+	stairsDown,
+	stairsUp
+};
+typedef struct Position
+{
+	int posX;
+	int posY;
 };

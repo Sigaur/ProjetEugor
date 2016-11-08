@@ -35,7 +35,7 @@ int Entity::getPosY()
 void Entity::setPos(int x, int y)
 {
 	this->m_posX = x;
-	this->m_posX = y;
+	this->m_posY = y;
 }
 
 int Entity::getId()

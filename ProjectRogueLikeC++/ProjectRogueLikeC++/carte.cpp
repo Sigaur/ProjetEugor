@@ -18,8 +18,21 @@ void Carte::displayCarte()
 	{
 		for (int i = 0; i < no_of_cols; i++)
 		{
-			tileDisplay(this->m_matrix[i][j]);
+			display(i, j);
 		}
+	}
+}
+
+void Carte::display(int x, int y)
+{
+	tileDisplay(this->m_matrix[x][y]);
+}
+
+void Carte::displayDoors()
+{
+	for (int i = 0; i < m_doors.size(); i++)
+	{
+		display(this->m_doors[i].posX, this->m_doors[i].posY);
 	}
 }
 
@@ -29,7 +42,8 @@ void Carte::setTest()
 	{
 		for (int i = 0; i < no_of_cols; i++)
 		{
-			this->m_matrix[i][j].set(1, 0, i, j);
+			this->m_matrix[i][j].set(0, i, j);
+			this->m_matrix[i][j].setType(unknow);
 			this->m_matrix[i][j].fulling();
 		}
 	}
@@ -159,6 +173,63 @@ bool Carte::isWalkable(int x1, int y1)
 	return this->m_matrix[x1][y1].isWalkable();
 }
 
+bool Carte::walking(int x1, int y1)
+{
+	getInteraction(x1, y1);
+	return this->m_matrix[x1][y1].walking();
+}
+
+void Carte::getInteraction(int x1, int y1)///MANAGING INTERACTIONS WITH MOVABLE OBJECTS(DOORS FOR EXEMPLE)
+{
+	for (int i = 0; i < this->m_doors.size(); i++)
+	{
+		if (x1 == this->m_doors[i].posX && y1 == this->m_doors[i].posY)
+		{
+
+		}
+	}
+}
+
+tileType Carte::getType(int x1, int y1)
+{
+	return this->m_matrix[x1][y1].getType();
+}
+
+Position Carte::getRandomFreeSpace()
+{
+	Position temp;
+	temp.posX = 0;
+	temp.posY = 0;
+	while (true)
+	{
+		temp.posX = rand() % this->no_of_cols;
+		temp.posY = rand() % this->no_of_rows;
+		if (!this->m_matrix[temp.posX][temp.posY].isFull())
+		{
+			return temp;
+		}
+	}
+}
+
+Position Carte::getPositionFromType(tileType type)
+{
+	Position temp;
+	temp.posX = 0;
+	temp.posY = 0;
+	for (int j = 0; j < no_of_rows; j++)
+	{
+		for (int i = 0; i < no_of_cols; i++)
+		{
+			if (this->m_matrix[i][j].getType() == type)
+			{
+				temp.posX = i;
+				temp.posY = j;
+			}
+		}
+	}
+	return temp;
+}
+
 std::string Carte::roomTypeGenerator(int &x1, int &y1, int &x2, int &y2, std::string from)
 {
 	int random = rand() % 10 + 1;
@@ -235,6 +306,7 @@ void Carte::roomTest(int paraX, int paraY, int corrX, int corrY, std::string fro
 	int entreeX = 0, entreeY = 0, random;
 	int decalageX, decalageY;
 	bool continu = 1;
+	Position door;
 	std::vector<Tile> wallUp;
 	std::vector<Tile> wallDown;
 	std::vector<Tile> wallRight;
@@ -308,8 +380,8 @@ void Carte::roomTest(int paraX, int paraY, int corrX, int corrY, std::string fro
 			{
 				pushingBack(wallConstructible, this->m_matrix[i][y1]);
 				pushingBack(wallConstructible, this->m_matrix[i][y2]);
-				this->m_matrix[i][y1].set(1, 3);
-				this->m_matrix[i][y2].set(1, 3);
+				//this->m_matrix[i][y1].set(1, 3);
+				//this->m_matrix[i][y2].set(1, 3);
 				//wallConstructible.push_back(this->m_matrix[i][y1]);
 				//wallConstructible.push_back(this->m_matrix[i][y2]);
 			}
@@ -317,14 +389,17 @@ void Carte::roomTest(int paraX, int paraY, int corrX, int corrY, std::string fro
 			{
 				pushingBack(wallConstructible, this->m_matrix[x1][j]);
 				pushingBack(wallConstructible, this->m_matrix[x2][j]);
-				this->m_matrix[x1][j].set(1, 3);
-				this->m_matrix[x2][j].set(1, 3);
+				//this->m_matrix[x1][j].set(1, 3);
+				//this->m_matrix[x2][j].set(1, 3);
 				//wallConstructible.push_back(this->m_matrix[x1][j]);
 				//wallConstructible.push_back(this->m_matrix[x2][j]);
 			}
 			this->m_matrix[corrX][corrY].digging();
-			this->m_matrix[corrX][corrY].set(1, 4);
-			this->m_matrix[corrX][corrY].setType(door);
+			//this->m_matrix[corrX][corrY].set(1);
+			this->m_matrix[corrX][corrY].setType(door_closed);
+			door.posX = corrX;
+			door.posY = corrY;
+			this->m_doors.push_back(door);
 			this->compteurDebug++;
 		}
 	}
@@ -390,8 +465,9 @@ void Carte::corridorTest(int paraX, int paraY, int corrX, int corrY, bool vertic
 	//}
 }
 */
-void Carte::dungeonTest()
+void Carte::dungeonTest(int level)
 {
+	Position randomPosition;
 	this->compteurDebug = 0;
 	int exitX, exitY, random;
 	int corrX = 0, corrY = 0;
@@ -399,13 +475,13 @@ void Carte::dungeonTest()
 	int x1 = (no_of_cols / 2) - 1, y1 = (no_of_rows / 2) - 1, x2 = (no_of_cols / 2) + 1, y2 = (no_of_rows / 2) + 1;
 	std::string from = "prob";
 	digging(x1, y1, x2, y2, brickFloor);
-
+	
 	for (int i = x1; i <= x2; i++)
 	{
 		pushingBack(wallConstructible, this->m_matrix[i][y1]);
 		pushingBack(wallConstructible, this->m_matrix[i][y2]);
-		this->m_matrix[i][y1].set(1, 3);
-		this->m_matrix[i][y2].set(1, 3);
+		//this->m_matrix[i][y1].set(1, 3);
+		//this->m_matrix[i][y2].set(1, 3);
 		//wallConstructible.push_back(this->m_matrix[i][y1]);
 		//wallConstructible.push_back(this->m_matrix[i][y2]);
 	}
@@ -413,12 +489,14 @@ void Carte::dungeonTest()
 	{
 		pushingBack(wallConstructible, this->m_matrix[x1][j]);
 		pushingBack(wallConstructible, this->m_matrix[x2][j]);
-		this->m_matrix[x1][j].set(1, 3);
-		this->m_matrix[x2][j].set(1, 3);
+		//this->m_matrix[x1][j].set(1, 3);
+		//this->m_matrix[x2][j].set(1, 3);
 		//wallConstructible.push_back(this->m_matrix[x1][j]);
 		//wallConstructible.push_back(this->m_matrix[x2][j]);
 	}
 	
+
+
 	for (int i = 0; i < 1000; i++)
 	{
 		random = rand() % wallConstructible.size();
@@ -522,5 +600,11 @@ void Carte::dungeonTest()
 		//roomTest(rand()%50, rand() % 50);
 	}
 	wallConstructible.clear();
-	//std::cout << this->compteurDebug << std::endl;
+	randomPosition = this->getRandomFreeSpace();
+	this->m_matrix[randomPosition.posX][randomPosition.posY].setType(stairsDown);
+	if (level > 0)
+	{
+		randomPosition = this->getRandomFreeSpace();
+		this->m_matrix[randomPosition.posX][randomPosition.posY].setType(stairsUp);
+	}
 }
