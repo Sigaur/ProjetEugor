@@ -2,6 +2,7 @@
 
 void tileDisplay(Tile tile)
 {
+	/*
 	sf::CircleShape shape(5.f);
 	shape.setPosition((float) (tile.getX() * 10.f), (float) (tile.getY() * 10.f));
 	if (!tile.isWalkable())
@@ -23,6 +24,24 @@ void tileDisplay(Tile tile)
 	else if (tile.getId() == 4)
 	{
 		shape.setFillColor(sf::Color::Blue);
+	}
+	window.draw(shape);
+	*/
+	sf::CircleShape shape(5.f);
+	shape.setPosition((float)(tile.getX() * 10.f), (float)(tile.getY() * 10.f));
+	switch (tile.getType())
+	{
+	default:
+		break;
+	case unknow:
+		shape.setFillColor(sf::Color::Black);
+		break;
+	case brickFloor:
+		shape.setFillColor(sf::Color::White);
+		break;
+	case door:
+		shape.setFillColor(sf::Color::Blue);
+		break;
 	}
 	window.draw(shape);
 }

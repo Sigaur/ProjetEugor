@@ -121,6 +121,8 @@
     <ClCompile Include="Carte.cpp" />
     <ClCompile Include="Display.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="EventsUser.cpp" />
+    <ClCompile Include="GraphicRessources.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Movable.cpp" />
     <ClCompile Include="Tile.cpp" />
@@ -130,6 +132,8 @@
     <ClInclude Include="Common.h" />
     <ClInclude Include="Display.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="EventsUser.h" />
+    <ClInclude Include="GraphicRessources.h" />
     <ClInclude Include="Movable.h" />
     <ClInclude Include="Tile.h" />
   </ItemGroup>

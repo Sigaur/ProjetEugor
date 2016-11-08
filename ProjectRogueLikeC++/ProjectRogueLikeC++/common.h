@@ -6,3 +6,9 @@
 #define WINDOWY 500
 
 extern sf::RenderWindow window;
+enum tileType
+{
+	unknow,
+	brickFloor,
+	door
+};

@@ -1,6 +1,5 @@
-#include "Carte.h"
-#include "Common.h"
 #include "Display.h"
+#include "EventsUser.h"
 
 sf::RenderWindow window(sf::VideoMode(WINDOWX, WINDOWY), "SFML works!");
 
@@ -43,36 +42,8 @@ int main()
 			while (clock() - refreshDate < 100);//Wait at least 0.1s before refreshing (10fps max)
 			refreshDate = clock();
 
-			//////////////////////////////////////CRONTROLLING PLAYER TO BE MOVED////////////
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad6))
-			{
-				if (myCarte->isWalkable(player->getPosX() + 1, player->getPosY()))
-				{
-					player->moveRight();
-				}
-			}
-			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad4))
-			{
-				if (myCarte->isWalkable(player->getPosX() - 1, player->getPosY()))
-				{
-					player->moveLeft();
-				}
-			}
-			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad8))
-			{
-				if (myCarte->isWalkable(player->getPosX(), player->getPosY() - 1))
-				{
-					player->moveUp();
-				}
-			}
-			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad2))
-			{
-				if (myCarte->isWalkable(player->getPosX(), player->getPosY() + 1))
-				{
-					player->moveDown();
-				}
-			}
-			//////////////////////////////////////CRONTROLLING PLAYER TO BE MOVED////////////
+
+			player->move(getMouvement(*myCarte, *player));
 			
 			window.clear();
 			window.draw(mapSprite);

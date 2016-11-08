@@ -61,3 +61,23 @@ void Movable::moveDown()
 		//this->m_lastAction = clock();
 	}
 }
+
+void Movable::move(std::string mouvement)
+{
+	if (mouvement == "right")
+	{
+		this->moveRight();
+	}
+	else if (mouvement == "left")
+	{
+		this->moveLeft();
+	}
+	else if (mouvement == "up")
+	{
+		this->moveUp();
+	}
+	else if (mouvement == "down")
+	{
+		this->moveDown();
+	}
+}

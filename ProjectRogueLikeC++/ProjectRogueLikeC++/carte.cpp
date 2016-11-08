@@ -49,7 +49,7 @@ void Carte::fulling(int x1, int y1, int x2, int y2)
 	}
 }
 
-void Carte::digging(int x1, int y1, int x2, int y2)
+void Carte::digging(int x1, int y1, int x2, int y2, tileType type)
 {
 	swapping(x1, x2);
 	swapping(y1, y2);
@@ -61,6 +61,7 @@ void Carte::digging(int x1, int y1, int x2, int y2)
 				&& (y1 > 1 && y1 < no_of_rows - 2) && (y2 > 1 && y2 < no_of_rows - 2))
 			{
 				this->m_matrix[i][j].digging();
+				this->m_matrix[i][j].setType(type);
 			}
 			else return;
 		}
@@ -302,7 +303,7 @@ void Carte::roomTest(int paraX, int paraY, int corrX, int corrY, std::string fro
 		if (isFull(x1, y1, x2, y2))
 		{
 			//std::cout << "Digging" << std::endl;
-			digging(x1, y1, x2, y2);
+			digging(x1, y1, x2, y2, brickFloor);
 			for (int i = x1; i <= x2; i++)
 			{
 				pushingBack(wallConstructible, this->m_matrix[i][y1]);
@@ -323,6 +324,7 @@ void Carte::roomTest(int paraX, int paraY, int corrX, int corrY, std::string fro
 			}
 			this->m_matrix[corrX][corrY].digging();
 			this->m_matrix[corrX][corrY].set(1, 4);
+			this->m_matrix[corrX][corrY].setType(door);
 			this->compteurDebug++;
 		}
 	}
@@ -396,7 +398,7 @@ void Carte::dungeonTest()
 	bool vertical = true;
 	int x1 = (no_of_cols / 2) - 1, y1 = (no_of_rows / 2) - 1, x2 = (no_of_cols / 2) + 1, y2 = (no_of_rows / 2) + 1;
 	std::string from = "prob";
-	digging(x1, y1, x2, y2);
+	digging(x1, y1, x2, y2, brickFloor);
 
 	for (int i = x1; i <= x2; i++)
 	{

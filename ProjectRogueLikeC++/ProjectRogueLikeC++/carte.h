@@ -11,7 +11,7 @@ public:
 	void setTest();
 
 	void fulling(int x1, int y1, int x2, int y2);
-	void digging(int x1, int y1, int x2, int y2);
+	void digging(int x1, int y1, int x2, int y2, tileType type);
 	bool isFull(int x1, int y1, int x2, int y2);
 	bool isWalkable(int x1, int y1);
 	bool inBound(int x1, int y1, int x2, int y2);

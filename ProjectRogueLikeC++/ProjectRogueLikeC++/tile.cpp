@@ -8,6 +8,7 @@ Tile::Tile()
 	this->m_x = 0;
 	this->m_y = 0;
 	this->m_full = 1;
+	this->m_type = unknow;
 }
 
 Tile::Tile(int walk, int id, int x, int y)
@@ -16,6 +17,7 @@ Tile::Tile(int walk, int id, int x, int y)
 	this->m_id = id;
 	this->m_x = x;
 	this->m_y = y;
+	this->m_type = unknow;
 }
 
 Tile::~Tile()
@@ -75,4 +77,14 @@ void Tile::digging()
 	}
 	this->m_full = 0;
 	this->m_walkable = 1;
+}
+
+void Tile::setType(tileType type)
+{
+	this->m_type = type;
+}
+
+tileType Tile::getType()
+{
+	return this->m_type;
 }
