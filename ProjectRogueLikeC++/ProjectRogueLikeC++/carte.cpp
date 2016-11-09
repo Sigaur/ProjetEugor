@@ -36,6 +36,35 @@ void Carte::displayDoors()
 	}
 }
 
+void Carte::setDoors(std::vector<bool> doors)
+{
+	for (int i = 0; i < doors.size() && i < this->m_doors.size(); i++)
+	{
+		if (doors[i])
+		{
+			//std::cout << "opening door" << this->m_doors[i].posX << "/" << this->m_doors[i].posY << std::endl;
+			this->m_matrix[this->m_doors[i].posX][this->m_doors[i].posY].openDoor();
+		}
+	}
+}
+
+std::vector<bool> Carte::saveDoors()
+{
+	std::vector <bool> temp;
+	for (int i = 0; i < this->m_doors.size(); i++)
+	{
+		if (this->m_matrix[this->m_doors[i].posX][this->m_doors[i].posY].getType() == door_open)
+		{
+			temp.push_back(true);
+		}
+		else
+		{
+			temp.push_back(false);
+		}
+	}
+	return temp;
+}
+
 void Carte::setTest()
 {
 	for (int j = 0; j < no_of_rows; j++)

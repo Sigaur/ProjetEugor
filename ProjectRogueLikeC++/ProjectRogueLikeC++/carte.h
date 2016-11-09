@@ -8,9 +8,13 @@ public:
 	Carte();
 	~Carte();
 	void display(int x, int y);
-	void displayCarte();
-	void displayDoors();
+	void displayCarte();	
 	void setTest();
+
+	//doorsGestion
+	void displayDoors();
+	void setDoors(std::vector<bool> doors);
+	std::vector<bool> saveDoors();
 
 	void fulling(int x1, int y1, int x2, int y2);
 	void digging(int x1, int y1, int x2, int y2, tileType type);

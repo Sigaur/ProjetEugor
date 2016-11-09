@@ -9,10 +9,12 @@ int main()
 	Position tempPosition;
 	srand(time(NULL));	
 	//srand(1250);
+	
 	std::vector<int> levelSeeds;
 	levelSeeds.push_back(rand());	
 	int level = 0;
 	srand(levelSeeds[level]);
+	std::vector<std::vector <bool>> doors;
 
 	Carte *myCarte = new Carte();
 	Movable *player = new Movable(1, "Player", 25, 25, 2);
@@ -52,19 +54,39 @@ int main()
 			playerAction = getMouvement(*myCarte, *player);
 			if (playerAction == "goingDown")
 			{
+				level++;
 				window.clear();
 				window.display();
-				if (level >= levelSeeds.size() - 1)
+				if (level >= levelSeeds.size())
 				{
 					levelSeeds.push_back(rand());
 				}
-				level++;
 				srand(levelSeeds[level]);
 				std::cout << "Level: " << level << "/" << levelSeeds[level] << std::endl;
 
+				//doorsManagement
+				//saving
+				if (level - 1 >= doors.size())
+				{
+					doors.push_back(myCarte->saveDoors());
+					std::cout << "Saving New :" << doors.size() - 1 << std::endl;
+				}
+				else
+				{
+					doors[level-1] = myCarte->saveDoors();
+					std::cout << "Saving In :" << level - 1 << std::endl;
+				}
+				
 				
 				myCarte->setTest();
 				myCarte->dungeonTest(level);
+				
+				//loadingDoors
+				if (level < doors.size())
+				{
+					myCarte->setDoors(doors[level]);
+					std::cout << "Loading :" << level << std::endl;
+				}
 				myCarte->displayCarte();
 				//window.display();
 				mapTexture.update(window);
@@ -74,14 +96,34 @@ int main()
 			}
 			if (playerAction == "goingUp" && level > 0)
 			{
-				window.clear();
-				window.display();
 				level--;
+				window.clear();
+				window.display();				
 				srand(levelSeeds[level]);
+				
 				std::cout << "Level: " << level << "/" << levelSeeds[level] << std::endl;
+
+				//doorsManagement
+				//saving
+				if (level + 1 >= doors.size())
+				{
+					doors.push_back(myCarte->saveDoors());
+					std::cout << "Saving New :" << doors.size() - 1 << std::endl;
+				}
+				else
+				{
+					doors[level + 1] = myCarte->saveDoors();
+					std::cout << "Saving In :" << level + 1 << std::endl;
+				}
 				
 				myCarte->setTest();
 				myCarte->dungeonTest(level);
+				//loadingDoors
+				if (level < doors.size())
+				{
+					myCarte->setDoors(doors[level]);
+					std::cout << "Loading :" << level << std::endl;
+				}
 				myCarte->displayCarte();
 				//window.display();
 				mapTexture.update(window);

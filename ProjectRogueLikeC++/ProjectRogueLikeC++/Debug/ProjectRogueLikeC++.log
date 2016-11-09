@@ -1,7 +1,19 @@
 ﻿  main.cpp
 c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\common.h(22): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
 c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(10): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(57): warning C4018: '>=': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(60): warning C4018: '>=': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(69): warning C4018: '>=': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(85): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(108): warning C4018: '>=': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(122): warning C4018: '<': signed/unsigned mismatch
 c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(8): warning C4101: 'action': unreferenced local variable
+  Carte.cpp
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\common.h(22): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\carte.cpp(33): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\carte.cpp(41): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\carte.cpp(54): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\carte.cpp(157): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\carte.cpp(213): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
   ProjectRogueLikeC++.vcxproj -> C:\Users\Seven_8\Work\ProjetEugor\ProjectRogueLikeC++\Debug\ProjectRogueLikeC++.exe
   ProjectRogueLikeC++.vcxproj -> C:\Users\Seven_8\Work\ProjetEugor\ProjectRogueLikeC++\Debug\ProjectRogueLikeC++.pdb (Partial PDB)
