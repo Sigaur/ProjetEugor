@@ -5,7 +5,11 @@ Carte::Carte()
 	this->no_of_cols = 50;
 	this->no_of_rows = 50;
 
+	this->compteurDebug = 0;
+
 	this->m_matrix.resize(no_of_rows, std::vector<Tile>(no_of_cols));
+
+	this->m_display = Display();
 }
 
 Carte::~Carte()
@@ -25,7 +29,7 @@ void Carte::displayCarte()
 
 void Carte::display(int x, int y)
 {
-	tileDisplay(this->m_matrix[x][y]);
+	this->m_display.tileDisplay(this->m_matrix[x][y]);
 }
 
 void Carte::displayDoors()
@@ -313,11 +317,11 @@ std::string Carte::roomTypeGenerator(int &x1, int &y1, int &x2, int &y2, std::st
 		} while (y1 > no_of_rows - 2 || y1 < 1);
 		do
 		{
-			x2 = x1 + rand() % 9 + 1;
+			x2 = x1 + rand() % 7 + 1;
 		} while (x2 > no_of_cols - 2 || x2 < 1);
 		do
 		{
-			y2 = y1 + rand() % 9 + 1;
+			y2 = y1 + rand() % 7 + 1;
 		} while (y2 > no_of_rows - 2 || y2 < 1);
 	}
 	//std::cout << "roomCoordinate" << x1 << "/" << y1 << "     " << x2 << "/" << y2 << std::endl;
@@ -430,6 +434,14 @@ void Carte::roomTest(int paraX, int paraY, int corrX, int corrY, std::string fro
 			door.posY = corrY;
 			this->m_doors.push_back(door);
 			this->compteurDebug++;
+
+			for (int i = 0; i < wallConstructible.size(); i++)
+			{
+				if (paraX == wallConstructible[i].getX() && paraY == wallConstructible[i].getY())
+				{
+					//std::cout << "Erase" << std::endl;
+				}
+			}
 		}
 	}
 	wallUp.clear();
@@ -497,7 +509,6 @@ void Carte::corridorTest(int paraX, int paraY, int corrX, int corrY, bool vertic
 void Carte::dungeonTest(int level)
 {
 	Position randomPosition;
-	this->compteurDebug = 0;
 	int exitX, exitY, random;
 	int corrX = 0, corrY = 0;
 	bool vertical = true;
@@ -526,7 +537,7 @@ void Carte::dungeonTest(int level)
 	
 
 
-	for (int i = 0; i < 1000; i++)
+	for (int i = 0; i < 500; i++)
 	{
 		random = rand() % wallConstructible.size();
 		exitX = wallConstructible[random].getX();
@@ -624,12 +635,13 @@ void Carte::dungeonTest(int level)
 			//} while ((exitX > no_of_cols - 1 || exitX < 1) || (exitY > no_of_rows - 1 || exitY < 1));
 		}
 		roomTest(exitX, exitY, corrX, corrY, from);
-		
+		//wallConstructible.erase(wallConstructible.begin() + random);
 		//system("PAUSE");
 		//roomTest(rand()%50, rand() % 50);
 	}
 	wallConstructible.clear();
 	randomPosition = this->getRandomFreeSpace();
+	std::cout << compteurDebug << std::endl;
 	this->m_matrix[randomPosition.posX][randomPosition.posY].setType(stairsDown);
 	if (level > 0)
 	{

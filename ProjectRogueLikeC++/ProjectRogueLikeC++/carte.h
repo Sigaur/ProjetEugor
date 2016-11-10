@@ -8,7 +8,7 @@ public:
 	Carte();
 	~Carte();
 	void display(int x, int y);
-	void displayCarte();	
+	void displayCarte();
 	void setTest();
 
 	//doorsGestion
@@ -41,6 +41,7 @@ private:
 	std::vector<Tile> wallConstructible;
 	std::vector<Position> m_doors;
 	int compteurDebug;
+	Display m_display;
 };
 	
 

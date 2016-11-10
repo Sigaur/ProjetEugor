@@ -4,6 +4,8 @@
 #include <string>
 #define WINDOWX 500
 #define WINDOWY 500
+#define VIEWPORTX 1600
+#define VIEWPORTY 1600
 
 extern sf::RenderWindow window;
 enum tileType
