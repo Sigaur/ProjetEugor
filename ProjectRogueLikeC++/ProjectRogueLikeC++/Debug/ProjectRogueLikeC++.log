@@ -1,12 +1,13 @@
 ﻿  main.cpp
 c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\common.h(24): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(54): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(72): warning C4018: '>=': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(81): warning C4018: '>=': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(97): warning C4018: '<': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(122): warning C4018: '>=': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(136): warning C4018: '<': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(11): warning C4101: 'action': unreferenced local variable
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(89): warning C4018: '>=': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(98): warning C4018: '>=': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(114): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(135): warning C4018: '>=': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(149): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(163): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(13): warning C4101: 'action': unreferenced local variable
   ProjectRogueLikeC++.vcxproj -> C:\Users\Seven_8\Work\ProjetEugor\ProjectRogueLikeC++\Debug\ProjectRogueLikeC++.exe
   ProjectRogueLikeC++.vcxproj -> C:\Users\Seven_8\Work\ProjetEugor\ProjectRogueLikeC++\Debug\ProjectRogueLikeC++.pdb (Partial PDB)

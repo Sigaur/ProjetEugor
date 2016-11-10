@@ -2,8 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
-#define WINDOWX 500
-#define WINDOWY 500
+#define WINDOWX 800
+#define WINDOWY 800
 #define VIEWPORTX 1600
 #define VIEWPORTY 1600
 

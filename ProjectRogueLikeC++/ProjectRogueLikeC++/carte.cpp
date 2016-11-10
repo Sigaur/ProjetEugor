@@ -5,22 +5,51 @@ Carte::Carte()
 	this->no_of_cols = 50;
 	this->no_of_rows = 50;
 
-	this->compteurDebug = 0;
 
 	this->m_matrix.resize(no_of_rows, std::vector<Tile>(no_of_cols));
 
-	this->m_display = Display();
 }
 
 Carte::~Carte()
 {
 }
 
-void Carte::displayCarte()
+void Carte::displayCarte(Movable player)
 {
+	/*
 	for (int j = 0; j < no_of_rows; j++)
 	{
 		for (int i = 0; i < no_of_cols; i++)
+		{
+			display(i, j);
+		}
+	}
+	*/
+	int minY, maxY, minX, maxX;
+	if (player.getPosY() - 6 < 0)
+		minY = 0;
+	else
+		minY = player.getPosY() - 6;
+	
+	if (player.getPosY() + 7 > no_of_rows)
+		maxY = no_of_rows;
+	else
+		maxY = player.getPosY() + 7;
+
+	if (player.getPosX() - 6 < 0)
+		minX = 0;
+	else
+		minX = player.getPosX() - 6;
+
+	if (player.getPosX() + 7 > no_of_cols)
+		maxX = no_of_cols;
+	else
+		maxX = player.getPosX() + 7;
+
+
+	for (int j = minY; j < maxY; j++)
+	{
+		for (int i = minX; i < maxX; i++)
 		{
 			display(i, j);
 		}
@@ -433,7 +462,6 @@ void Carte::roomTest(int paraX, int paraY, int corrX, int corrY, std::string fro
 			door.posX = corrX;
 			door.posY = corrY;
 			this->m_doors.push_back(door);
-			this->compteurDebug++;
 
 			for (int i = 0; i < wallConstructible.size(); i++)
 			{
@@ -641,7 +669,6 @@ void Carte::dungeonTest(int level)
 	}
 	wallConstructible.clear();
 	randomPosition = this->getRandomFreeSpace();
-	std::cout << compteurDebug << std::endl;
 	this->m_matrix[randomPosition.posX][randomPosition.posY].setType(stairsDown);
 	if (level > 0)
 	{

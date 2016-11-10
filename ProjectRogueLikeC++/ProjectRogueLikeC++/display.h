@@ -11,12 +11,15 @@ public:
 	void entityDisplay(Movable entity);
 
 private:
-	sf::Texture textUnknow;
-	sf::Texture textBrickFloor;	
-	sf::Texture textDoor_closed;
-	sf::Texture textDoor_open;
-	sf::Texture textStairsDown;
-	sf::Texture textStairsUp;
+	sf::Texture text32x32;
+	
+	sf::IntRect rectUnknow;
+	sf::IntRect rectBrickFloor;
+	sf::IntRect rectDoor_closed;
+	sf::IntRect rectDoor_open;
+	sf::IntRect rectStairsDown;
+	sf::IntRect rectStairsUp;
+	sf::IntRect rectPlayer;
 };
 
 

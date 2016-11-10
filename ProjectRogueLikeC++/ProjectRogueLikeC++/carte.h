@@ -8,7 +8,7 @@ public:
 	Carte();
 	~Carte();
 	void display(int x, int y);
-	void displayCarte();
+	void displayCarte(Movable player);
 	void setTest();
 
 	//doorsGestion
@@ -34,14 +34,13 @@ public:
 	Position Carte::getRandomFreeSpace();
 	Position Carte::getPositionFromType(tileType type);
 	void dungeonTest(int level);
+	Display m_display;
 private:
 	std::vector<std::vector<Tile>> m_matrix;
 	int no_of_cols;
 	int no_of_rows;
 	std::vector<Tile> wallConstructible;
 	std::vector<Position> m_doors;
-	int compteurDebug;
-	Display m_display;
 };
 	
 
