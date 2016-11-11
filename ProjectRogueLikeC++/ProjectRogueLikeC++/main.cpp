@@ -7,7 +7,7 @@ int main()
 {
 	sf::View viewDefault = window.getView();
 	sf::View viewMap(sf::FloatRect(0, 0, 1600, 1600));
-	viewMap.zoom(0.5);
+	viewMap.zoom(0.25);
 	viewMap.setCenter(528, 528);
 	
 	bool action;
@@ -62,7 +62,6 @@ int main()
 			do
 			{
 				playerAction = getMouvement(myCarte, player);//Getting the User Action
-				
 				if (lastAction != playerAction)
 				{
 					lastAction = playerAction;
@@ -70,15 +69,10 @@ int main()
 				}
 				else
 					numberOfLastAction++;
-				
-
-				
 			} while (playerAction == "no mouvement");
-			std::cout << numberOfLastAction << std::endl;
 			refreshDate = clock();
 			if (numberOfLastAction > 1)
 				refreshDate -= 100;
-
 			if (playerAction == "camRight")
 			{
 				viewMap.move(32, 0);
