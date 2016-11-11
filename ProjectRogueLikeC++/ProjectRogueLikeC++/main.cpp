@@ -1,19 +1,22 @@
 #include "Display.h"
 #include "EventsUser.h"
 
-sf::RenderWindow window(sf::VideoMode(WINDOWX, WINDOWY), "SFML works!");
+sf::RenderWindow window(sf::VideoMode(WINDOWX, WINDOWY), "Projet Eugor!");
 
 int main()
 {
 	sf::View viewDefault = window.getView();
 	sf::View viewMap(sf::FloatRect(0, 0, 1600, 1600));
-	viewMap.zoom(0.25);
+	viewMap.zoom(0.5);
 	viewMap.setCenter(528, 528);
 	
 	bool action;
 	Position tempPosition;
 	srand(time(NULL));	
 	//srand(1251);
+
+	int numberOfLastAction;
+	std::string lastAction;
 	
 	std::vector<int> levelSeeds;
 	levelSeeds.push_back(rand());	
@@ -37,16 +40,18 @@ int main()
 				break;
 			case sf::Event::Closed:
 				window.close();
+			case sf::Event::Resized:
+				std::cout << "new width: " << event.size.width << std::endl;
+				std::cout << "new height: " << event.size.height << std::endl;
 				break;
 			}
-				
 		}
 			viewMap.setCenter(((player.getPosX()) * 32) + 16, ((player.getPosY()) * 32) + 16);
 			window.setView(viewMap);
 			myCarte.setTest();
 			myCarte.dungeonTest(level);
 			myCarte.displayCarte(player);
-			myCarte.displayDoors();
+			//myCarte.displayDoors();
 			myCarte.m_display.entityDisplay(player);
 			window.display();
 			
@@ -57,9 +62,22 @@ int main()
 			do
 			{
 				playerAction = getMouvement(myCarte, player);//Getting the User Action
-			} while (playerAction == "no mouvement");
-			refreshDate = clock();
+				
+				if (lastAction != playerAction)
+				{
+					lastAction = playerAction;
+					numberOfLastAction = 0;
+				}
+				else
+					numberOfLastAction++;
+				
 
+				
+			} while (playerAction == "no mouvement");
+			std::cout << numberOfLastAction << std::endl;
+			refreshDate = clock();
+			if (numberOfLastAction > 1)
+				refreshDate -= 100;
 
 			if (playerAction == "camRight")
 			{
@@ -154,13 +172,13 @@ int main()
 				tempPosition = myCarte.getPositionFromType(stairsDown);
 				player.setPos(tempPosition.posX, tempPosition.posY);
 			}
-			else
+			
 			{
 				player.move(playerAction);
+				viewMap.setCenter(((player.getPosX()) * 32) + 16, ((player.getPosY()) * 32) + 16);
 			}
 			
 			window.clear();
-			viewMap.setCenter(((player.getPosX()) * 32) + 16, ((player.getPosY()) * 32) + 16);
 			window.setView(viewMap);
 			myCarte.displayCarte(player);
 			myCarte.displayDoors();

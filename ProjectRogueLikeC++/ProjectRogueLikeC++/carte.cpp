@@ -63,10 +63,12 @@ void Carte::display(int x, int y)
 
 void Carte::displayDoors()
 {
+	/* NO More needed since the whole map is not displayed each time
 	for (int i = 0; i < m_doors.size(); i++)
 	{
 		display(this->m_doors[i].posX, this->m_doors[i].posY);
 	}
+	*/
 }
 
 void Carte::setDoors(std::vector<bool> doors)
