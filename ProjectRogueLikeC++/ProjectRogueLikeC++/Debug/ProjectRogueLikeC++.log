@@ -1,19 +1,37 @@
-﻿  main.cpp
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\common.h(22): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(10): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(60): warning C4018: '>=': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(69): warning C4018: '>=': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(85): warning C4018: '<': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(108): warning C4018: '>=': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(122): warning C4018: '<': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\main.cpp(8): warning C4101: 'action': unreferenced local variable
+﻿  Tile.cpp
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\common.h(24): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\tile.cpp(15): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\tile.cpp(53): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\tile.cpp(60): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
+  Movable.cpp
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\common.h(24): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\movable.cpp(21): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  main.cpp
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\common.h(24): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\main.cpp(15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\main.cpp(44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\main.cpp(89): warning C4018: '>=': signed/unsigned mismatch
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\main.cpp(98): warning C4018: '>=': signed/unsigned mismatch
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\main.cpp(114): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\main.cpp(135): warning C4018: '>=': signed/unsigned mismatch
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\main.cpp(149): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\main.cpp(163): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\main.cpp(13): warning C4101: 'action': unreferenced local variable
+  EventsUser.cpp
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\common.h(24): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
+  Entity.cpp
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\common.h(24): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
+  Display.cpp
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\common.h(24): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
   Carte.cpp
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\common.h(22): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\carte.cpp(33): warning C4018: '<': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\carte.cpp(41): warning C4018: '<': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\carte.cpp(54): warning C4018: '<': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\carte.cpp(157): warning C4018: '<': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\carte.cpp(213): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\common.h(24): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\carte.cpp(66): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\carte.cpp(74): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\carte.cpp(87): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\carte.cpp(190): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\carte.cpp(246): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\desktop\projeteugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\projectroguelikec++\projectroguelikec++\carte.cpp(466): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
-  ProjectRogueLikeC++.vcxproj -> C:\Users\Seven_8\Work\ProjetEugor\ProjectRogueLikeC++\Debug\ProjectRogueLikeC++.exe
-  ProjectRogueLikeC++.vcxproj -> C:\Users\Seven_8\Work\ProjetEugor\ProjectRogueLikeC++\Debug\ProjectRogueLikeC++.pdb (Partial PDB)
+  LINK : C:\Users\Seven_8\Desktop\ProjetEugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\ProjectRogueLikeC++\Debug\ProjectRogueLikeC++.exe not found or not built by the last incremental link; performing full link
+  ProjectRogueLikeC++.vcxproj -> C:\Users\Seven_8\Desktop\ProjetEugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\ProjectRogueLikeC++\Debug\ProjectRogueLikeC++.exe
+  ProjectRogueLikeC++.vcxproj -> C:\Users\Seven_8\Desktop\ProjetEugor-d72797fca46ac40fd944a571ccadea6a6bd7924e\ProjectRogueLikeC++\Debug\ProjectRogueLikeC++.pdb (Partial PDB)

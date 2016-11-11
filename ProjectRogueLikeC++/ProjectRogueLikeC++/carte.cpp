@@ -5,18 +5,51 @@ Carte::Carte()
 	this->no_of_cols = 50;
 	this->no_of_rows = 50;
 
+
 	this->m_matrix.resize(no_of_rows, std::vector<Tile>(no_of_cols));
+
 }
 
 Carte::~Carte()
 {
 }
 
-void Carte::displayCarte()
+void Carte::displayCarte(Movable player)
 {
+	/*
 	for (int j = 0; j < no_of_rows; j++)
 	{
 		for (int i = 0; i < no_of_cols; i++)
+		{
+			display(i, j);
+		}
+	}
+	*/
+	int minY, maxY, minX, maxX;
+	if (player.getPosY() - 6 < 0)
+		minY = 0;
+	else
+		minY = player.getPosY() - 6;
+	
+	if (player.getPosY() + 7 > no_of_rows)
+		maxY = no_of_rows;
+	else
+		maxY = player.getPosY() + 7;
+
+	if (player.getPosX() - 6 < 0)
+		minX = 0;
+	else
+		minX = player.getPosX() - 6;
+
+	if (player.getPosX() + 7 > no_of_cols)
+		maxX = no_of_cols;
+	else
+		maxX = player.getPosX() + 7;
+
+
+	for (int j = minY; j < maxY; j++)
+	{
+		for (int i = minX; i < maxX; i++)
 		{
 			display(i, j);
 		}
@@ -25,7 +58,7 @@ void Carte::displayCarte()
 
 void Carte::display(int x, int y)
 {
-	tileDisplay(this->m_matrix[x][y]);
+	this->m_display.tileDisplay(this->m_matrix[x][y]);
 }
 
 void Carte::displayDoors()
@@ -313,11 +346,11 @@ std::string Carte::roomTypeGenerator(int &x1, int &y1, int &x2, int &y2, std::st
 		} while (y1 > no_of_rows - 2 || y1 < 1);
 		do
 		{
-			x2 = x1 + rand() % 9 + 1;
+			x2 = x1 + rand() % 7 + 1;
 		} while (x2 > no_of_cols - 2 || x2 < 1);
 		do
 		{
-			y2 = y1 + rand() % 9 + 1;
+			y2 = y1 + rand() % 7 + 1;
 		} while (y2 > no_of_rows - 2 || y2 < 1);
 	}
 	//std::cout << "roomCoordinate" << x1 << "/" << y1 << "     " << x2 << "/" << y2 << std::endl;
@@ -429,7 +462,14 @@ void Carte::roomTest(int paraX, int paraY, int corrX, int corrY, std::string fro
 			door.posX = corrX;
 			door.posY = corrY;
 			this->m_doors.push_back(door);
-			this->compteurDebug++;
+
+			for (int i = 0; i < wallConstructible.size(); i++)
+			{
+				if (paraX == wallConstructible[i].getX() && paraY == wallConstructible[i].getY())
+				{
+					//std::cout << "Erase" << std::endl;
+				}
+			}
 		}
 	}
 	wallUp.clear();
@@ -497,7 +537,6 @@ void Carte::corridorTest(int paraX, int paraY, int corrX, int corrY, bool vertic
 void Carte::dungeonTest(int level)
 {
 	Position randomPosition;
-	this->compteurDebug = 0;
 	int exitX, exitY, random;
 	int corrX = 0, corrY = 0;
 	bool vertical = true;
@@ -526,7 +565,7 @@ void Carte::dungeonTest(int level)
 	
 
 
-	for (int i = 0; i < 1000; i++)
+	for (int i = 0; i < 500; i++)
 	{
 		random = rand() % wallConstructible.size();
 		exitX = wallConstructible[random].getX();
@@ -624,7 +663,7 @@ void Carte::dungeonTest(int level)
 			//} while ((exitX > no_of_cols - 1 || exitX < 1) || (exitY > no_of_rows - 1 || exitY < 1));
 		}
 		roomTest(exitX, exitY, corrX, corrY, from);
-		
+		//wallConstructible.erase(wallConstructible.begin() + random);
 		//system("PAUSE");
 		//roomTest(rand()%50, rand() % 50);
 	}

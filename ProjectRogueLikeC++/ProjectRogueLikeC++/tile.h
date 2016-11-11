@@ -23,8 +23,8 @@ public:
 	tileType getType();
 private:
 	bool m_walkable;
-	int m_x;
-	int m_y;
+	unsigned int m_x;
+	unsigned int m_y;
 	bool m_full;
 	tileType m_type;
 };
