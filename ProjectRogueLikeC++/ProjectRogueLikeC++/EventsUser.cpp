@@ -4,7 +4,24 @@
 std::string getMouvement(Carte &myCarte, Movable &player)
 {
 	std::string retour;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad6))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	{
+		retour = "camRight";
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	{
+		retour = "camLeft";
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		retour = "camUp";
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	{
+		retour = "camDown";
+	}
+
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad6))
 	{
 		if (myCarte.walking(player.getPosX() + 1, player.getPosY()))
 		{
