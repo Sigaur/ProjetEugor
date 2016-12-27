@@ -1,6 +1,5 @@
 #pragma once
 #include "Tile.h"
-#include "Common.h"
 #include "Movable.h"
 
 class Display {

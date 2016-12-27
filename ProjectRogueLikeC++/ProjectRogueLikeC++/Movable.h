@@ -1,7 +1,6 @@
 #pragma once
 #include "Entity.h"
 #include <time.h>
-#include <string.h>
 
 class Movable : public Entity
 {

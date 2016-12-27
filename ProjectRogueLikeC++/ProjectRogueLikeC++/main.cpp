@@ -1,4 +1,3 @@
-#include "Display.h"
 #include "EventsUser.h"
 
 sf::RenderWindow window(sf::VideoMode(WINDOWX, WINDOWY), "Projet Eugor!");
@@ -7,12 +6,11 @@ int main()
 {
 	sf::View viewDefault = window.getView();
 	sf::View viewMap(sf::FloatRect(0, 0, 1600, 1600));
-	viewMap.zoom(0.25);
+	viewMap.zoom(0.5);
 	viewMap.setCenter(528, 528);
 	
-	bool action;
 	Position tempPosition;
-	srand(time(NULL));	
+	srand(time(NULL));
 	//srand(1251);
 
 	int numberOfLastAction;
@@ -72,7 +70,8 @@ int main()
 			} while (playerAction == "no mouvement");
 			refreshDate = clock();
 			if (numberOfLastAction > 1)
-				refreshDate -= 100;
+				refreshDate -= 125;
+
 			if (playerAction == "camRight")
 			{
 				viewMap.move(32, 0);

@@ -7,7 +7,6 @@ Carte::Carte()
 
 
 	this->m_matrix.resize(no_of_rows, std::vector<Tile>(no_of_cols));
-
 }
 
 Carte::~Carte()
@@ -26,25 +25,25 @@ void Carte::displayCarte(Movable player)
 	}
 	*/
 	int minY, maxY, minX, maxX;
-	if (player.getPosY() - 6 < 0)
+	if (player.getPosY() - 12 < 0)
 		minY = 0;
 	else
-		minY = player.getPosY() - 6;
+		minY = player.getPosY() - 12;
 	
-	if (player.getPosY() + 7 > no_of_rows)
+	if (player.getPosY() + 13 > no_of_rows)
 		maxY = no_of_rows;
 	else
-		maxY = player.getPosY() + 7;
+		maxY = player.getPosY() + 13;
 
-	if (player.getPosX() - 6 < 0)
+	if (player.getPosX() - 12 < 0)
 		minX = 0;
 	else
-		minX = player.getPosX() - 6;
+		minX = player.getPosX() - 12;
 
-	if (player.getPosX() + 7 > no_of_cols)
+	if (player.getPosX() + 13 > no_of_cols)
 		maxX = no_of_cols;
 	else
-		maxX = player.getPosX() + 7;
+		maxX = player.getPosX() + 13;
 
 
 	for (int j = minY; j < maxY; j++)
