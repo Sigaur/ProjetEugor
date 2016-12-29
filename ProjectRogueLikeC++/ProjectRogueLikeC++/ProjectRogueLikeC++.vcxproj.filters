@@ -33,7 +33,10 @@
     <ClCompile Include="Movable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EventsUser.cpp">
+    <ClCompile Include="GameLoop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Database.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,7 +59,10 @@
     <ClInclude Include="Movable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EventsUser.h">
+    <ClInclude Include="GameLoop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Database.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -13,63 +13,6 @@ Carte::~Carte()
 {
 }
 
-void Carte::displayCarte(Movable player)
-{
-	/*
-	for (int j = 0; j < no_of_rows; j++)
-	{
-		for (int i = 0; i < no_of_cols; i++)
-		{
-			display(i, j);
-		}
-	}
-	*/
-	int minY, maxY, minX, maxX;
-	if (player.getPosY() - 12 < 0)
-		minY = 0;
-	else
-		minY = player.getPosY() - 12;
-	
-	if (player.getPosY() + 13 > no_of_rows)
-		maxY = no_of_rows;
-	else
-		maxY = player.getPosY() + 13;
-
-	if (player.getPosX() - 12 < 0)
-		minX = 0;
-	else
-		minX = player.getPosX() - 12;
-
-	if (player.getPosX() + 13 > no_of_cols)
-		maxX = no_of_cols;
-	else
-		maxX = player.getPosX() + 13;
-
-
-	for (int j = minY; j < maxY; j++)
-	{
-		for (int i = minX; i < maxX; i++)
-		{
-			display(i, j);
-		}
-	}
-}
-
-void Carte::display(int x, int y)
-{
-	this->m_display.tileDisplay(this->m_matrix[x][y]);
-}
-
-void Carte::displayDoors()
-{
-	/* NO More needed since the whole map is not displayed each time
-	for (int i = 0; i < m_doors.size(); i++)
-	{
-		display(this->m_doors[i].posX, this->m_doors[i].posY);
-	}
-	*/
-}
-
 void Carte::setDoors(std::vector<bool> doors)
 {
 	for (int i = 0; i < doors.size() && i < this->m_doors.size(); i++)
@@ -676,4 +619,20 @@ void Carte::dungeonTest(int level)
 		randomPosition = this->getRandomFreeSpace();
 		this->m_matrix[randomPosition.posX][randomPosition.posY].setType(stairsUp);
 	}
+}
+
+int Carte::getNoCols()
+{
+	return this->no_of_cols;
+}
+
+int Carte::getNoRows()
+{
+	return this->no_of_rows;
+}
+
+void Carte::setSize(int cols, int rows)
+{
+	this->no_of_cols = cols;
+	this->no_of_rows = rows;
 }

@@ -18,6 +18,8 @@ public:
 	void moveDownRight();
 	void moveDownLeft();
 	void move(std::string mouvement);
+
+	void setPosition(int x, int y);
 protected:
 	float m_speed;
 	int m_lastAction;

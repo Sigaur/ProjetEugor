@@ -137,3 +137,9 @@ void Movable::move(std::string mouvement)
 		this->moveDownLeft();
 	}
 }
+
+void Movable::setPosition(int x, int y)
+{
+	m_posX = x;
+	m_posY = y;
+}

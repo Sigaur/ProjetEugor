@@ -1,18 +1,14 @@
 #pragma once
 #include <vector>
 #include "Tile.h"
-#include "Display.h"
 
 class Carte {
 public:
 	Carte();
 	~Carte();
-	void display(int x, int y);
-	void displayCarte(Movable player);
 	void setTest();
 
 	//doorsGestion
-	void displayDoors();
 	void setDoors(std::vector<bool> doors);
 	std::vector<bool> saveDoors();
 
@@ -34,9 +30,13 @@ public:
 	Position Carte::getRandomFreeSpace();
 	Position Carte::getPositionFromType(tileType type);
 	void dungeonTest(int level);
-	Display m_display;
-private:
+
 	std::vector<std::vector<Tile>> m_matrix;
+
+	int getNoCols();
+	int getNoRows();
+	void setSize(int cols, int rows);
+private:
 	int no_of_cols;
 	int no_of_rows;
 	std::vector<Tile> wallConstructible;
