@@ -10,6 +10,7 @@ GameLoop::GameLoop()
 	window.setView(m_viewMap);
 
 	this->m_database = Database();
+	m_posCam = m_database.m_player.getPosition();
 }
 
 void GameLoop::startRun()
@@ -83,24 +84,28 @@ std::string GameLoop::getMouvement()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
 		retour = "camRight";
+		m_posCam.posX++;
 		m_viewMap.move(32, 0);
 		window.setView(m_viewMap);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
 		retour = "camLeft";
+		m_posCam.posX--;
 		m_viewMap.move(-32, 0);
 		window.setView(m_viewMap);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
 		retour = "camUp";
+		m_posCam.posY--;
 		m_viewMap.move(0, -32);
 		window.setView(m_viewMap);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
 		retour = "camDown";
+		m_posCam.posY++;
 		m_viewMap.move(0, 32);
 		window.setView(m_viewMap);
 	}
@@ -194,17 +199,17 @@ std::string GameLoop::getMouvement()
 				}
 				srand(this->m_levelSeeds[this->m_level]);
 
-				//doorsManagement
+				//doorsManagement // ExploredManagement
 				//saving
 				if (this->m_level - 1 >= this->m_database.m_doors.size())
 				{
 					this->m_database.m_doors.push_back(this->m_database.m_carte.saveDoors());
-					//std::cout << "Saving New :" << this->m_database.m_doors.size() - 1 << std::endl;
+					this->m_database.m_explored.push_back(this->m_database.m_carte.saveExplored());
 				}
 				else
 				{
 					this->m_database.m_doors[this->m_level - 1] = this->m_database.m_carte.saveDoors();
-					//std::cout << "Saving In :" << level - 1 << std::endl;
+					this->m_database.m_explored[this->m_level - 1] = this->m_database.m_carte.saveExplored();
 				}
 
 				this->m_database.createLevel(this->m_level);
@@ -213,7 +218,7 @@ std::string GameLoop::getMouvement()
 				if (this->m_level < this->m_database.m_doors.size())
 				{
 					this->m_database.m_carte.setDoors(this->m_database.m_doors[this->m_level]);
-					//std::cout << "Loading :" << level << std::endl;
+					this->m_database.m_carte.setExplored(this->m_database.m_explored[this->m_level]);
 				}
 
 				//system("Pause");
@@ -241,12 +246,12 @@ std::string GameLoop::getMouvement()
 					if (this->m_level + 1 >= this->m_database.m_doors.size())
 					{
 						this->m_database.m_doors.push_back(this->m_database.m_carte.saveDoors());
-						//std::cout << "Saving New :" << this->m_database.m_doors.size() - 1 << std::endl;
+						this->m_database.m_explored.push_back(this->m_database.m_carte.saveExplored());
 					}
 					else
 					{
 						this->m_database.m_doors[this->m_level + 1] = this->m_database.m_carte.saveDoors();
-						//std::cout << "Saving In :" << level + 1 << std::endl;
+						this->m_database.m_explored[this->m_level + 1] = this->m_database.m_carte.saveExplored();
 					}
 
 					this->m_database.createLevel(this->m_level);
@@ -255,7 +260,7 @@ std::string GameLoop::getMouvement()
 					if (this->m_level < this->m_database.m_doors.size())
 					{
 						this->m_database.m_carte.setDoors(this->m_database.m_doors[this->m_level]);
-						//std::cout << "Loading :" << level << std::endl;
+						this->m_database.m_carte.setExplored(this->m_database.m_explored[this->m_level]);
 					}
 					tempPosition = this->m_database.m_carte.getPositionFromType(stairsDown);
 					this->m_database.m_player.setPos(tempPosition.posX, tempPosition.posY);
@@ -273,13 +278,20 @@ std::string GameLoop::getMouvement()
 void GameLoop::displayAll()
 {
 	window.clear();
-	this->m_database.displayAll();
+	if ((m_posCam.posX == m_database.m_player.getPosition().posX) && (m_posCam.posY == m_database.m_player.getPosition().posY))////WIP SURCHAGER OPERATEUR
+		this->m_database.displayAll();
+	else
+		this->m_database.displayAll(m_posCam.posX, m_posCam.posY);		
+	window.setView(m_viewDefault);
+	this->m_database.m_display.displayLevel(m_level);
+	window.setView(m_viewMap);
 	window.display();
 }
 
 void GameLoop::setViewOnPlayer()
 {
 	m_viewMap.setCenter(((this->m_database.m_player.getPosX()) * 32) + 16, ((this->m_database.m_player.getPosY()) * 32) + 16);
+	m_posCam = this->m_database.m_player.getPosition();
 	window.setView(m_viewMap);
 }
 

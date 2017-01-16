@@ -10,6 +10,8 @@ public:
 	void entityDisplay(Entity entity);
 	void entityDisplay(Movable entity);
 
+	void displayLevel(int level);
+
 private:
 	sf::Texture text32x32;
 	
@@ -21,6 +23,9 @@ private:
 	sf::IntRect rectStairsDown;
 	sf::IntRect rectStairsUp;
 	sf::IntRect rectPlayer;
+
+	sf::Font font;
+	sf::Text text;
 };
 
 

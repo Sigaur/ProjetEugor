@@ -14,7 +14,11 @@ Display::Display()
 	this->rectPlayer = sf::IntRect(96, 448, 32, 32);
 	if (!this->text32x32.loadFromFile("32x32.png", sf::IntRect(0, 0, 4096, 960)))
 	{
-		std::cout << "ERROR" << std::endl;
+		std::cout << "ERROR 32x32.png not found" << std::endl;
+	}
+	if (!font.loadFromFile("DODG5.ttf"))
+	{
+		std::cout << "ERROR DODG5.ttf not found" << std::endl;
 	}
 }
 
@@ -80,3 +84,13 @@ void Display::entityDisplay(Movable entity)
 	window.draw(sprite);
 }
 
+void Display::displayLevel(int level)
+{
+	std::string temp = "Level : ";	
+	temp += std::to_string(level);
+	
+	text.setFont(font);
+	//text.setColor(sf::Color::Green);
+	text.setString(temp);
+	window.draw(text);
+}

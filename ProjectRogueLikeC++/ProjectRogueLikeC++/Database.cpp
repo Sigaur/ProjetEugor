@@ -27,6 +27,52 @@ void Database::displayAll()
 	displayEntities();
 }
 
+void Database::displayAll(int x, int y)
+{
+	displayCarte(x, y);
+	displayEntities();
+}
+
+void Database::displayCarte(int initX, int initY)
+{
+	std::cout << "Display Camera" << std::endl;
+	int minY, maxY, minX, maxX;
+	int no_of_rows = this->m_carte.getNoRows(), no_of_cols = this->m_carte.getNoCols();
+
+	if (initY - 12 < 0)
+		minY = 0;
+	else
+		minY = initY - 12;
+
+	if (initY + 13 > no_of_rows)
+		maxY = no_of_rows;
+	else
+		maxY = initY + 13;
+
+	if (initX - 12 < 0)
+		minX = 0;
+	else
+		minX = initX - 12;
+
+	if (initX + 13 > no_of_cols)
+		maxX = no_of_cols;
+	else
+		maxX = initX + 13;
+
+	//////////////////////Temp Sends Min/Max x/y to FOV Function///////////////////
+
+	for (int j = minY; j < maxY; j++)
+	{
+		for (int i = minX; i < maxX; i++)
+		{
+			if (this->m_carte.m_matrix[i][j].isExplored())
+				displayTile(i, j, true);
+		}
+	}
+
+	FOV(minX, maxX, minY, maxY);
+}
+
 void Database::displayCarte()
 {
 	int minY, maxY, minX, maxX;

@@ -42,6 +42,43 @@ std::vector<bool> Carte::saveDoors()
 	return temp;
 }
 
+void Carte::setExplored(std::vector< std::vector<bool> > explored)
+{
+	for (int x = 0; x < explored.size(); x++)
+	{
+		for (int y = 0; y < explored.size(); y++)
+		{
+			if (explored[x][y] == true)
+				this->m_matrix[x][y].setExplored(true);
+		}
+	}
+}
+
+std::vector< std::vector<bool> > Carte::saveExplored()
+{
+	std::vector< std::vector<bool> > temp;
+	std::vector<bool> tempCol;
+	for (int x = 0; x < this->m_matrix.size(); x++)
+	{
+		tempCol.push_back(false);
+	}
+	for (int x = 0; x < this->m_matrix.size(); x++)
+	{
+		temp.push_back(tempCol);
+	}
+
+	for (int x = 0; x < this->m_matrix.size(); x++)
+	{
+		for (int y = 0; y < this->m_matrix.size(); y++)
+		{
+			if (this->m_matrix[x][y].isExplored() == true)
+				temp[x][y] = true;
+		}
+	}
+
+	return temp;
+}
+
 void Carte::setTest()
 {
 	for (int j = 0; j < no_of_rows; j++)
@@ -315,13 +352,6 @@ std::string Carte::roomTypeGenerator(int &x1, int &y1, int &x2, int &y2, std::st
 
 void Carte::roomTest(int paraX, int paraY, int corrX, int corrY, std::string from)
 {
-	for (int i = 0; i < m_matrix.size(); i++)
-	{
-		for (int j = 0; j < m_matrix.size(); j++)/////////////////!!!!!!!!!!!!!!WIP
-		{
-			m_matrix[i][j].setExplored(false);
-		}
-	}
 	int x1;
 	int y1;
 	int x2;
@@ -497,6 +527,13 @@ void Carte::corridorTest(int paraX, int paraY, int corrX, int corrY, bool vertic
 */
 void Carte::dungeonTest(int level)
 {
+	for (int i = 0; i < m_matrix.size(); i++)
+	{
+		for (int j = 0; j < m_matrix.size(); j++)/////////////////!!!!!!!!!!!!!!WIP
+		{
+			m_matrix[i][j].setExplored(false);
+		}
+	}
 	Position randomPosition;
 	int exitX, exitY, random;
 	int corrX = 0, corrY = 0;

@@ -12,6 +12,10 @@ public:
 	void setDoors(std::vector<bool> doors);
 	std::vector<bool> saveDoors();
 
+	//explored Gestion
+	void setExplored(std::vector< std::vector<bool> > explored);
+	std::vector< std::vector<bool> > saveExplored();
+
 	void fulling(int x1, int y1, int x2, int y2);
 	void digging(int x1, int y1, int x2, int y2, tileType type);
 	bool isFull(int x1, int y1, int x2, int y2);
