@@ -52,18 +52,282 @@ void Database::displayCarte()
 	else
 		maxX = this->m_player.getPosX() + 13;
 
+	//////////////////////Temp Sends Min/Max x/y to FOV Function///////////////////
+	
 	for (int j = minY; j < maxY; j++)
 	{
 		for (int i = minX; i < maxX; i++)
 		{
-			displayTile(i, j);
+			if(this->m_carte.m_matrix[i][j].isExplored())
+				displayTile(i, j, true);
 		}
 	}
+	
+	FOV(minX, maxX, minY, maxY);
 }
 
-void Database::displayTile(int x, int y)
+
+void Database::FOV(int minX, int maxX, int minY, int maxY)
 {
-	this->m_display.tileDisplay(this->m_carte.m_matrix[x][y]);
+	m_visible.clear();
+
+	Position posTemp;
+	std::vector<Position> lineRight;
+	std::vector<Position> lineDown;
+	std::vector<Position> lineLeft;
+	std::vector<Position> lineUp;
+
+	int initialX = m_player.getPosX();
+	int initialY = m_player.getPosY();
+
+	int view = m_player.getView();
+
+	///////Test single direction : Right side/////
+	///////Add Direction!!!!!!!!!!!!!
+
+	////Initialisation
+	posTemp = m_player.getPosition();
+	
+		////First Line
+	//Right
+	for (int i = 0; i <= view; i++)
+	{
+		if (initialX + i < maxX)
+		{
+			posTemp.posX = initialX + i;
+			posTemp.posY = initialY;
+
+			if (!m_carte.isSeeThr(posTemp.posX, posTemp.posY))
+				i += (view + 1);
+			else
+				lineRight.push_back(posTemp);
+
+			m_visible.push_back(posTemp);
+			displayTile(posTemp, false);
+			m_carte.m_matrix[posTemp.posX][posTemp.posY].setExplored(true);
+		}
+	}
+	//Left
+	for (int i = 0; i <= view; i++)
+	{
+		if (initialX - i > minX)
+		{
+			posTemp.posX = initialX - i;
+			posTemp.posY = initialY;
+
+			if (!m_carte.isSeeThr(posTemp.posX, posTemp.posY))
+				i += (view + 1);
+			else
+				lineLeft.push_back(posTemp);
+
+			m_visible.push_back(posTemp);
+			displayTile(posTemp, false);
+			m_carte.m_matrix[posTemp.posX][posTemp.posY].setExplored(true);
+		}
+	}
+	//Down
+	for (int i = 0; i <= view; i++)
+	{
+		if (initialY + i < maxY)
+		{
+			posTemp.posX = initialX;
+			posTemp.posY = initialY + i;
+
+			if (!m_carte.isSeeThr(posTemp.posX, posTemp.posY))
+				i += (view + 1);
+			else
+				lineDown.push_back(posTemp);
+
+			m_visible.push_back(posTemp);
+			displayTile(posTemp, false);
+			m_carte.m_matrix[posTemp.posX][posTemp.posY].setExplored(true);
+		}
+	}
+	//Up
+	for (int i = 0; i <= view; i++)
+	{
+		if (initialY - i > minY)
+		{
+			posTemp.posX = initialX;
+			posTemp.posY = initialY - i;
+
+			if (!m_carte.isSeeThr(posTemp.posX, posTemp.posY))
+				i += (view + 1);				
+			else
+				lineUp.push_back(posTemp);
+
+			m_visible.push_back(posTemp);
+			displayTile(posTemp, false);
+			m_carte.m_matrix[posTemp.posX][posTemp.posY].setExplored(true);
+		}
+	}
+	
+
+	////Iterative Diagonals
+	///Right
+	for (int x = 0; x < lineRight.size(); x++)
+	{
+		initialX = lineRight[x].posX;
+		initialY = lineRight[x].posY;
+		//RightUp
+		for (int i = 1; i <= view - x; i++)
+		{
+			if ((initialX + i < maxX) && (initialY - i > minY))
+			{
+				posTemp.posX = initialX + i;
+				posTemp.posY = initialY - i;
+
+				if (!m_carte.isSeeThr(posTemp.posX, posTemp.posY))
+					i += (view + 1);
+
+				m_visible.push_back(posTemp);
+				displayTile(posTemp, false);
+				m_carte.m_matrix[posTemp.posX][posTemp.posY].setExplored(true);
+			}
+		}
+		//RightDown
+		for (int i = 1; i <= view - x; i++)
+		{
+			if ((initialX + i < maxX) && (initialY + i < maxY))
+			{
+				posTemp.posX = initialX + i;
+				posTemp.posY = initialY + i;
+
+				if (!m_carte.isSeeThr(posTemp.posX, posTemp.posY))
+					i += (view + 1);
+
+				m_visible.push_back(posTemp);
+				displayTile(posTemp, false);
+				m_carte.m_matrix[posTemp.posX][posTemp.posY].setExplored(true);
+			}
+		}
+	}
+	///Left
+	for (int x = 0; x < lineLeft.size(); x++)
+	{
+		initialX = lineLeft[x].posX;
+		initialY = lineLeft[x].posY;
+		//LeftUp
+		for (int i = 1; i <= view - x; i++)
+		{
+			if ((initialX - i > minX) && (initialY - i > minY))
+			{
+				posTemp.posX = initialX - i;
+				posTemp.posY = initialY - i;
+
+				if (!m_carte.isSeeThr(posTemp.posX, posTemp.posY))
+					i += (view + 1);
+
+				m_visible.push_back(posTemp);
+				displayTile(posTemp, false);
+				m_carte.m_matrix[posTemp.posX][posTemp.posY].setExplored(true);
+			}
+		}
+		//LeftDown
+		for (int i = 1; i <= view - x; i++)
+		{
+			if ((initialX - i < maxX) && (initialY + i < maxY))
+			{
+				posTemp.posX = initialX - i;
+				posTemp.posY = initialY + i;
+
+				if (!m_carte.isSeeThr(posTemp.posX, posTemp.posY))
+					i += (view + 1);
+
+				m_visible.push_back(posTemp);
+				displayTile(posTemp, false);
+				m_carte.m_matrix[posTemp.posX][posTemp.posY].setExplored(true);
+			}
+		}
+	}
+	///Up
+	for (int x = 0; x < lineUp.size(); x++)
+	{
+		initialX = lineUp[x].posX;
+		initialY = lineUp[x].posY;
+		//LeftUp
+		for (int i = 1; i <= view - x; i++)
+		{
+			if ((initialX - i > minX) && (initialY - i > minY))
+			{
+				posTemp.posX = initialX - i;
+				posTemp.posY = initialY - i;
+
+				if (!m_carte.isSeeThr(posTemp.posX, posTemp.posY))
+					i += (view + 1);
+
+				m_visible.push_back(posTemp);
+				displayTile(posTemp, false);
+				m_carte.m_matrix[posTemp.posX][posTemp.posY].setExplored(true);
+			}
+		}
+		//RightUp
+		for (int i = 1; i <= view - x; i++)
+		{
+			if ((initialX + i < maxX) && (initialY - i < maxY))
+			{
+				posTemp.posX = initialX + i;
+				posTemp.posY = initialY - i;
+
+				if (!m_carte.isSeeThr(posTemp.posX, posTemp.posY))
+					i += (view + 1);
+
+				m_visible.push_back(posTemp);
+				displayTile(posTemp, false);
+				m_carte.m_matrix[posTemp.posX][posTemp.posY].setExplored(true);
+			}
+		}
+	}
+	///Down
+	for (int x = 0; x < lineDown.size(); x++)
+	{
+		initialX = lineDown[x].posX;
+		initialY = lineDown[x].posY;
+		//LeftDown
+		for (int i = 1; i <= view - x; i++)
+		{
+			if ((initialX - i > minX) && (initialY + i > minY))
+			{
+				posTemp.posX = initialX - i;
+				posTemp.posY = initialY + i;
+
+				if (!m_carte.isSeeThr(posTemp.posX, posTemp.posY))
+					i += (view + 1);
+
+				m_visible.push_back(posTemp);
+				displayTile(posTemp, false);
+				m_carte.m_matrix[posTemp.posX][posTemp.posY].setExplored(true);
+			}
+		}
+		//RightDown
+		for (int i = 1; i <= view - x; i++)
+		{
+			if ((initialX + i < maxX) && (initialY + i < maxY))
+			{
+				posTemp.posX = initialX + i;
+				posTemp.posY = initialY + i;
+
+				if (!m_carte.isSeeThr(posTemp.posX, posTemp.posY))
+					i += (view + 1);
+
+				m_visible.push_back(posTemp);
+				displayTile(posTemp, false);
+				m_carte.m_matrix[posTemp.posX][posTemp.posY].setExplored(true);
+			}
+		}
+	}
+	
+	
+}
+
+void Database::displayTile(int x, int y, bool fade)
+{
+	this->m_display.tileDisplay(this->m_carte.m_matrix[x][y], fade);
+}
+
+void Database::displayTile(Position position, bool fade)
+{
+	this->m_display.tileDisplay(this->m_carte.m_matrix[position.posX][position.posY], fade);
 }
 
 void Database::displayEntities()

@@ -1,24 +1,11 @@
-﻿  Database.cpp
+﻿  Carte.cpp
 c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\common.h(24): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
-  Generating Code...
-  Compiling...
-  main.cpp
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\common.h(24): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
-  GameLoop.cpp
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\common.h(24): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\gameloop.cpp(19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\gameloop.cpp(17): warning C4101: 'tempPosition': unreferenced local variable
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\gameloop.cpp(191): warning C4018: '>=': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\gameloop.cpp(199): warning C4018: '>=': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\gameloop.cpp(213): warning C4018: '<': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\gameloop.cpp(241): warning C4018: '>=': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\gameloop.cpp(255): warning C4018: '<': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\gameloop.cpp(282): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Display.cpp
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\common.h(24): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  Entity.cpp
-  Carte.cpp
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\carte.cpp(18): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\carte.cpp(31): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\carte.cpp(134): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\carte.cpp(200): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\carte.cpp(318): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\carte.cpp(320): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\carte.cpp(427): warning C4018: '<': signed/unsigned mismatch
   ProjectRogueLikeC++.vcxproj -> C:\Users\Seven_8\Work\ProjetEugor\ProjectRogueLikeC++\Debug\ProjectRogueLikeC++.exe
   ProjectRogueLikeC++.vcxproj -> C:\Users\Seven_8\Work\ProjetEugor\ProjectRogueLikeC++\Debug\ProjectRogueLikeC++.pdb (Partial PDB)

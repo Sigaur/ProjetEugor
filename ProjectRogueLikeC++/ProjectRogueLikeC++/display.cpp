@@ -5,6 +5,7 @@ Display::Display()
 	//std::cout << "SpritesDb Init" << std::endl;
 	
 	this->rectUnknow = sf::IntRect(64, 0, 32, 32);
+	this->deflt = sf::IntRect(704, 736, 32, 32);
 	this->rectBrickFloor = sf::IntRect(32, 736, 32, 32);
 	this->rectDoor_closed = sf::IntRect(96, 704, 32, 32);
 	this->rectDoor_open = sf::IntRect(192, 704, 32, 32);
@@ -17,33 +18,8 @@ Display::Display()
 	}
 }
 
-void Display::tileDisplay(Tile tile)
+void Display::tileDisplay(Tile tile, bool fade)
 {
-	/*
-	sf::CircleShape shape(5.f);
-	shape.setPosition((float) (tile.getX() * 10.f), (float) (tile.getY() * 10.f));
-	if (!tile.isWalkable())
-	{
-		shape.setFillColor(sf::Color::Red);
-	}
-	else
-	{
-		shape.setFillColor(sf::Color::White);
-	}
-	if (tile.getX() == 25 && tile.getY() == 25)
-	{
-		//shape.setFillColor(sf::Color::Green);
-	}
-	else if (tile.getId() == 3)
-	{
-		//shape.setFillColor(sf::Color::Yellow);
-	}
-	else if (tile.getId() == 4)
-	{
-		shape.setFillColor(sf::Color::Blue);
-	}
-	window.draw(shape);
-	*/
 	sf::Sprite sprite;
 	sprite.setPosition((float)(tile.getX() * 32.f), (float)(tile.getY() * 32.f));
 	sprite.setTexture(this->text32x32);
@@ -53,10 +29,10 @@ void Display::tileDisplay(Tile tile)
 	switch (tile.getType())
 	{
 	default:
-		sprite.setTextureRect(this->rectUnknow);
+		sprite.setTextureRect(this->deflt);
 		break;
 	case unknow:
-		sprite.setTextureRect(this->rectUnknow);
+		sprite.setTextureRect(this->deflt);
 		break;
 	case brickFloor:
 		sprite.setTextureRect(this->rectBrickFloor);
@@ -74,6 +50,9 @@ void Display::tileDisplay(Tile tile)
 		sprite.setTextureRect(this->rectStairsUp);
 		break;
 	}
+	if(fade)
+		sprite.setColor(sf::Color(255, 255, 255, 100));//Fade out for already explored ground
+
 	window.draw(sprite);
 }
 

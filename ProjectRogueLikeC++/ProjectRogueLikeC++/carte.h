@@ -16,6 +16,7 @@ public:
 	void digging(int x1, int y1, int x2, int y2, tileType type);
 	bool isFull(int x1, int y1, int x2, int y2);
 	bool isWalkable(int x1, int y1);
+	bool isSeeThr(int x1, int y1);
 	bool walking(int x1, int y1);
 	void getInteraction(int x1, int y1);
 	tileType getType(int x1, int y1);
@@ -32,6 +33,8 @@ public:
 	void dungeonTest(int level);
 
 	std::vector<std::vector<Tile>> m_matrix;
+
+	Tile getTile(int x, int y);
 
 	int getNoCols();
 	int getNoRows();

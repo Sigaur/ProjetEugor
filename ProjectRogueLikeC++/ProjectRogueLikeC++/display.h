@@ -5,7 +5,7 @@
 class Display {
 public:
 	Display();
-	void tileDisplay(Tile tile);
+	void tileDisplay(Tile tile, bool fade);
 
 	void entityDisplay(Entity entity);
 	void entityDisplay(Movable entity);
@@ -14,6 +14,7 @@ private:
 	sf::Texture text32x32;
 	
 	sf::IntRect rectUnknow;
+	sf::IntRect deflt;
 	sf::IntRect rectBrickFloor;
 	sf::IntRect rectDoor_closed;
 	sf::IntRect rectDoor_open;

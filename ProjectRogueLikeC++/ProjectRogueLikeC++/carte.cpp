@@ -179,10 +179,20 @@ bool Carte::isWalkable(int x1, int y1)
 	return this->m_matrix[x1][y1].isWalkable();
 }
 
+bool Carte::isSeeThr(int x1, int y1)
+{
+	return this->m_matrix[x1][y1].isSeeThr();
+}
+
 bool Carte::walking(int x1, int y1)
 {
 	getInteraction(x1, y1);
 	return this->m_matrix[x1][y1].walking();
+}
+
+Tile Carte::getTile(int x, int y)
+{
+	return this->m_matrix[x][y];
 }
 
 void Carte::getInteraction(int x1, int y1)///MANAGING INTERACTIONS WITH MOVABLE OBJECTS(DOORS FOR EXEMPLE)
@@ -305,6 +315,13 @@ std::string Carte::roomTypeGenerator(int &x1, int &y1, int &x2, int &y2, std::st
 
 void Carte::roomTest(int paraX, int paraY, int corrX, int corrY, std::string from)
 {
+	for (int i = 0; i < m_matrix.size(); i++)
+	{
+		for (int j = 0; j < m_matrix.size(); j++)/////////////////!!!!!!!!!!!!!!WIP
+		{
+			m_matrix[i][j].setExplored(false);
+		}
+	}
 	int x1;
 	int y1;
 	int x2;

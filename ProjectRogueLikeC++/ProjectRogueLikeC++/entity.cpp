@@ -7,6 +7,8 @@ Entity::Entity()
 	this->m_name = "UNAMED ENTITY";
 	this->m_posX = 0;
 	this->m_posX = 0;
+
+	this->m_view = 5;
 }
 
 Entity::Entity(int id, std::string name, int posX, int posY)
@@ -30,6 +32,25 @@ int Entity::getPosX()
 int Entity::getPosY()
 {
 	return this->m_posY;
+}
+
+Position Entity::getPosition()
+{
+	Position tempPosition;
+	tempPosition.posX = this->m_posX;
+	tempPosition.posY = this->m_posY;
+
+	return tempPosition;
+}
+
+void Entity::setView(int view)
+{
+	this->m_view = view;
+}
+
+int Entity::getView()
+{
+	return this->m_view;
 }
 
 void Entity::setPos(int x, int y)

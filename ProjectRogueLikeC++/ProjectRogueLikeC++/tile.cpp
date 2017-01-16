@@ -8,6 +8,7 @@ Tile::Tile()
 	this->m_y = 0;
 	this->m_full = 1;
 	this->m_type = unknow;
+	this->m_explored = false;
 }
 
 Tile::Tile(int walk, int x, int y)
@@ -40,6 +41,11 @@ bool Tile::isWalkable()
 	return this->m_walkable;
 }
 
+bool Tile::isSeeThr()
+{
+	return this->m_seeThr;
+}
+
 void Tile::openDoor()
 {
 	if (this->m_type == door_closed)
@@ -55,9 +61,24 @@ void Tile::set(int walk, int x, int y)
 	this->m_y = y;
 }
 
-void Tile::set(int walk)
+void Tile::setWalkable(bool walk)
 {
 	this->m_walkable = walk;
+}
+
+void Tile::setSeeThr(bool seeThr)
+{
+	this->m_seeThr = seeThr;
+}
+
+void Tile::setExplored(bool explored)
+{
+	this->m_explored = explored;
+}
+
+bool Tile::isExplored()
+{
+	return this->m_explored;
 }
 
 int Tile::getX()
@@ -97,22 +118,32 @@ void Tile::setType(tileType type)
 	switch (m_type)
 	{
 	case unknow:
-		this->set(0);
+		this->setWalkable(false);
+		this->setSeeThr(false);
 		break;
 	case brickFloor:
-		this->set(1);
+		this->setWalkable(true);
+		this->setSeeThr(true);
 		break;
 	case door_open:
-		this->set(1);
+		this->setWalkable(true);
+		this->setSeeThr(true);
+		break;
+	case door_closed:
+		this->setWalkable(false);
+		this->setSeeThr(false);
 		break;
 	case stairsDown:
-		this->set(1);
+		this->setWalkable(true);
+		this->setSeeThr(true);
 		break;
 	case stairsUp:
-		this->set(1);
+		this->setWalkable(true);
+		this->setSeeThr(true);
 		break;
 	default:
-		this->set(0);
+		this->setWalkable(false);
+		this->setSeeThr(false);
 		break;
 	}
 }
