@@ -15,7 +15,9 @@ enum tileType
 	door_closed,
 	door_open,
 	stairsDown,
-	stairsUp
+	stairsUp,
+	////Ores
+	emergium
 };
 typedef struct Position
 {

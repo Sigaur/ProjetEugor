@@ -257,7 +257,7 @@ Position Carte::getRandomFreeSpace()
 	{
 		temp.posX = rand() % this->no_of_cols;
 		temp.posY = rand() % this->no_of_rows;
-		if (!this->m_matrix[temp.posX][temp.posY].isFull())
+		if (this->m_matrix[temp.posX][temp.posY].getType() == brickFloor)
 		{
 			return temp;
 		}
@@ -468,63 +468,7 @@ void Carte::roomTest(int paraX, int paraY, int corrX, int corrY, std::string fro
 	wallRight.clear();
 	wallLeft.clear();
 }
-/*
-void Carte::corridorTest(int paraX, int paraY, int corrX, int corrY, bool vertical)
-{
-	int x1;
-	int y1;
-	int x2;
-	int y2;
-	int entreeX, entreeY, random;
-	int decalageX, decalageY;
-	bool continu = 1;
-	std::vector<Tile> temp;
 
-
-	//while (continu)
-	//{
-	
-	//std::cout << x1 << "/" << y1 <<"     "<< x2 << "/" << y2 << std::endl;
-	for (int i = x1; i <= x2; i++)
-	{
-		pushingBack(temp, this->m_matrix[i][y1]);
-		pushingBack(temp, this->m_matrix[i][y2]);
-		//temp.push_back(this->m_matrix[i][y1]);
-		//temp.push_back(this->m_matrix[i][y2]);
-	}
-	for (int j = y1 + 1; j < y2; j++)
-	{
-		pushingBack(temp, this->m_matrix[x1][j]);
-		pushingBack(temp, this->m_matrix[x2][j]);
-		//temp.push_back(this->m_matrix[x1][j]);
-		//temp.push_back(this->m_matrix[x2][j]);
-	}
-	random = rand() % temp.size();
-	entreeX = temp[random].getX();
-	entreeY = temp[random].getY();
-
-	decalageX = entreeX - paraX;
-	decalageY = entreeY - paraY;
-
-	x1 -= decalageX;
-	x2 -= decalageX;
-	y1 -= decalageY;
-	y2 -= decalageY;
-	//std::cout << "Is full" << x1 << "/" << y1 << "   " << x2 << "/" << y2<< std::endl;
-	if (isFull(x1, y1, x2, y2))
-	{
-		//std::cout << "Digging" << std::endl;
-		digging(x1, y1, x2, y2);
-		pushingBack(wallConstructible, this->m_matrix[x1][y1]);
-		pushingBack(wallConstructible, this->m_matrix[x2][y2]);
-		this->m_matrix[x1][y1].set(1, 3);
-		this->m_matrix[x2][y2].set(1, 3);
-		this->m_matrix[corrX][corrY].digging();
-		this->m_matrix[corrX][corrY].set(1, 4);
-	}
-	//}
-}
-*/
 void Carte::dungeonTest(int level)
 {
 	for (int i = 0; i < m_matrix.size(); i++)
@@ -672,6 +616,12 @@ void Carte::dungeonTest(int level)
 	{
 		randomPosition = this->getRandomFreeSpace();
 		this->m_matrix[randomPosition.posX][randomPosition.posY].setType(stairsUp);
+	}
+
+	for (int i = 0; i < 10; i++)
+	{
+		randomPosition = this->getRandomFreeSpace();
+		this->m_matrix[randomPosition.posX][randomPosition.posY].setType(emergium);
 	}
 }
 

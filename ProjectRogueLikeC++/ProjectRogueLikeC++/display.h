@@ -16,13 +16,15 @@ private:
 	sf::Texture text32x32;
 	
 	sf::IntRect rectUnknow;
-	sf::IntRect deflt;
+	sf::IntRect rectDeflt;
 	sf::IntRect rectBrickFloor;
 	sf::IntRect rectDoor_closed;
 	sf::IntRect rectDoor_open;
 	sf::IntRect rectStairsDown;
 	sf::IntRect rectStairsUp;
 	sf::IntRect rectPlayer;
+	sf::IntRect rectEnnemi;
+	sf::IntRect rectEmergium;
 
 	sf::Font font;
 	sf::Text text;

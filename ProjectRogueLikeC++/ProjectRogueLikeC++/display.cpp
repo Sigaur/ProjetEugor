@@ -5,13 +5,15 @@ Display::Display()
 	//std::cout << "SpritesDb Init" << std::endl;
 	
 	this->rectUnknow = sf::IntRect(64, 0, 32, 32);
-	this->deflt = sf::IntRect(704, 736, 32, 32);
+	this->rectDeflt = sf::IntRect(704, 736, 32, 32);
 	this->rectBrickFloor = sf::IntRect(32, 736, 32, 32);
 	this->rectDoor_closed = sf::IntRect(96, 704, 32, 32);
 	this->rectDoor_open = sf::IntRect(192, 704, 32, 32);
 	this->rectStairsDown = sf::IntRect(482, 704, 32, 32);
 	this->rectStairsUp = sf::IntRect(384, 704, 32, 32);
 	this->rectPlayer = sf::IntRect(96, 448, 32, 32);
+	this->rectEnnemi = sf::IntRect(1280, 512, 32, 32);
+	this->rectEmergium = sf::IntRect(704, 768, 32, 32);
 	if (!this->text32x32.loadFromFile("32x32.png", sf::IntRect(0, 0, 4096, 960)))
 	{
 		std::cout << "ERROR 32x32.png not found" << std::endl;
@@ -33,10 +35,10 @@ void Display::tileDisplay(Tile tile, bool fade)
 	switch (tile.getType())
 	{
 	default:
-		sprite.setTextureRect(this->deflt);
+		sprite.setTextureRect(this->rectUnknow);
 		break;
 	case unknow:
-		sprite.setTextureRect(this->deflt);
+		sprite.setTextureRect(this->rectDeflt);
 		break;
 	case brickFloor:
 		sprite.setTextureRect(this->rectBrickFloor);
@@ -52,6 +54,10 @@ void Display::tileDisplay(Tile tile, bool fade)
 		break;
 	case stairsUp:
 		sprite.setTextureRect(this->rectStairsUp);
+		break;
+	////////////Ores
+	case emergium:
+		sprite.setTextureRect(this->rectEmergium);
 		break;
 	}
 	if(fade)

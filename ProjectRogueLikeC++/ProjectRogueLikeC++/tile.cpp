@@ -141,6 +141,10 @@ void Tile::setType(tileType type)
 		this->setWalkable(true);
 		this->setSeeThr(true);
 		break;
+	case emergium:
+		this->setWalkable(true);
+		this->setSeeThr(true);
+		break;
 	default:
 		this->setWalkable(false);
 		this->setSeeThr(false);
