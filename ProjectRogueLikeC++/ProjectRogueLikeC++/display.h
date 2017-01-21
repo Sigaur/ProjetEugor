@@ -14,6 +14,10 @@ public:
 
 private:
 	sf::Texture text32x32;
+	sf::Texture IHM_Left;
+	sf::Texture IHM_Bottom;
+	sf::Texture IHM_Right;
+
 	
 	sf::IntRect rectUnknow;
 	sf::IntRect rectDeflt;

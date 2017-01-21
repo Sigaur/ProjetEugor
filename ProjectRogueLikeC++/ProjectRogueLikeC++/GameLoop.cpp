@@ -1,12 +1,15 @@
 #include "GameLoop.h"
 
-sf::RenderWindow window(sf::VideoMode(WINDOWX, WINDOWY), "Projet Eugor!");
+sf::RenderWindow window(sf::VideoMode(WINDOWX, WINDOWY), "Projet Eugor!", sf::Style::Fullscreen);
 
 GameLoop::GameLoop()
 {
 	this->m_viewDefault = window.getView();
-	this->m_viewMap = sf::View (sf::FloatRect(0, 0, 1600, 1600));
+
+	this->m_viewMap = sf::View (sf::FloatRect(0, 0, 1600, 1600));////////////////HARDCODING
 	this->m_viewMap.zoom(0.5);
+	sf::FloatRect temp (0.25f, 0, 0.5f, 0.88888888889f);
+	this->m_viewMap.setViewport(temp);
 	window.setView(m_viewMap);
 
 	this->m_database = Database();
@@ -268,6 +271,10 @@ std::string GameLoop::getMouvement()
 				}
 			}
 		}//To be cleaned
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+		{
+			window.close();
+		}
 	else
 	{
 		retour = "no mouvement";
@@ -278,13 +285,13 @@ std::string GameLoop::getMouvement()
 void GameLoop::displayAll()
 {
 	window.clear();
+	window.setView(m_viewDefault);
+	this->m_database.m_display.displayLevel(m_level);
+	window.setView(m_viewMap);	
 	if ((m_posCam.posX == m_database.m_player.getPosition().posX) && (m_posCam.posY == m_database.m_player.getPosition().posY))////WIP SURCHAGER OPERATEUR
 		this->m_database.displayAll();
 	else
-		this->m_database.displayAll(m_posCam.posX, m_posCam.posY);		
-	window.setView(m_viewDefault);
-	this->m_database.m_display.displayLevel(m_level);
-	window.setView(m_viewMap);
+		this->m_database.displayAll(m_posCam.posX, m_posCam.posY);	
 	window.display();
 }
 

@@ -35,7 +35,6 @@ void Database::displayAll(int x, int y)
 
 void Database::displayCarte(int initX, int initY)
 {
-	std::cout << "Display Camera" << std::endl;
 	int minY, maxY, minX, maxX;
 	int no_of_rows = this->m_carte.getNoRows(), no_of_cols = this->m_carte.getNoCols();
 

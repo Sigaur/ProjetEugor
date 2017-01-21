@@ -18,6 +18,18 @@ Display::Display()
 	{
 		std::cout << "ERROR 32x32.png not found" << std::endl;
 	}
+	if (!this->IHM_Left.loadFromFile("IHM_Left.png", sf::IntRect(0, 0, 400, 900)))
+	{
+		std::cout << "ERROR IHM_Left.png not found" << std::endl;
+	}
+	if (!this->IHM_Right.loadFromFile("IHM_Right.png", sf::IntRect(0, 0, 400, 900)))
+	{
+		std::cout << "ERROR IHM_Right.png not found" << std::endl;
+	}
+	if (!this->IHM_Bottom.loadFromFile("IHM_Bottom.png", sf::IntRect(0, 0, 800, 100)))
+	{
+		std::cout << "ERROR IHM_Bottom.png not found" << std::endl;
+	}
 	if (!font.loadFromFile("DODG5.ttf"))
 	{
 		std::cout << "ERROR DODG5.ttf not found" << std::endl;
@@ -92,6 +104,21 @@ void Display::entityDisplay(Movable entity)
 
 void Display::displayLevel(int level)
 {
+	///////Temporaire
+	sf::Sprite spriteIHM_Left;
+	spriteIHM_Left.setTexture(this->IHM_Left);
+	window.draw(spriteIHM_Left);
+
+	sf::Sprite spriteIHM_Bottom;
+	spriteIHM_Bottom.setTexture(this->IHM_Bottom);
+	spriteIHM_Bottom.setPosition(400, 800);
+	window.draw(spriteIHM_Bottom);
+
+	sf::Sprite spriteIHM_Right;
+	spriteIHM_Right.setTexture(this->IHM_Right);
+	spriteIHM_Right.setPosition(1200, 0);
+	window.draw(spriteIHM_Right);
+
 	std::string temp = "Level : ";	
 	temp += std::to_string(level);
 	
