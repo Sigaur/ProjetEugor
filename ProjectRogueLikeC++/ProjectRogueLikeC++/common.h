@@ -4,8 +4,11 @@
 #include <string>
 #define WINDOWX 1600
 #define WINDOWY 900
-#define VIEWPORTX 1600
-#define VIEWPORTY 1600
+
+#define MAPX 800
+#define MAPY 800
+
+#define NB_TILES_DISPLAY 12//number of tiles displayed around the player
 
 extern sf::RenderWindow window;
 enum tileType
@@ -18,6 +21,12 @@ enum tileType
 	stairsUp,
 	////Ores
 	emergium
+};
+enum entitiesType
+{
+	unknow,
+	player,
+	ennemi
 };
 typedef struct Position
 {

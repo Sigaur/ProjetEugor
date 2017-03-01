@@ -14,6 +14,7 @@ public:
 	
 	std::string getMouvement();	
 private:
+	int refreshRate;//Nb of miliseconds before another action is done
 	Position m_posCam;
 	sf::View m_viewDefault, m_viewMap;
 	Database m_database;

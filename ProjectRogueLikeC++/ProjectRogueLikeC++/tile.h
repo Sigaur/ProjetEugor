@@ -1,6 +1,8 @@
 #pragma once
 #include "Common.h"
 
+#define TILE_SIZE 32
+
 class Tile
 {
 public:

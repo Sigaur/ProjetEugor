@@ -9,6 +9,7 @@ Entity::Entity()
 	this->m_posX = 0;
 
 	this->m_view = 5;
+	this->m_type = unknow;
 }
 
 Entity::Entity(int id, std::string name, int posX, int posY)
@@ -22,6 +23,11 @@ Entity::Entity(int id, std::string name, int posX, int posY)
 Entity::~Entity()
 {
 
+}
+
+entitiesType Entity::getType()
+{
+	return this->m_type;
 }
 
 int Entity::getPosX()

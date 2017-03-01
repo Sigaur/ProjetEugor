@@ -18,7 +18,7 @@ private:
 	sf::Texture IHM_Bottom;
 	sf::Texture IHM_Right;
 
-	
+	//Tiles:
 	sf::IntRect rectUnknow;
 	sf::IntRect rectDeflt;
 	sf::IntRect rectBrickFloor;
@@ -26,9 +26,15 @@ private:
 	sf::IntRect rectDoor_open;
 	sf::IntRect rectStairsDown;
 	sf::IntRect rectStairsUp;
-	sf::IntRect rectPlayer;
 	sf::IntRect rectEnnemi;
 	sf::IntRect rectEmergium;
+
+	//Entities:
+	sf::IntRect rectPlayer;
+	sf::IntRect rectEnnemiInactif;
+	sf::IntRect rectEnnemiPatrol;
+	sf::IntRect rectEnnemiDefence;
+	sf::IntRect rectUnknowEntity;
 
 	sf::Font font;
 	sf::Text text;

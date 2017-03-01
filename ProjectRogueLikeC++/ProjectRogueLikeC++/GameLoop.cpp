@@ -6,11 +6,12 @@ GameLoop::GameLoop()
 {
 	this->m_viewDefault = window.getView();
 
-	this->m_viewMap = sf::View (sf::FloatRect(0, 0, 1600, 1600));////////////////HARDCODING
-	this->m_viewMap.zoom(0.5);
-	sf::FloatRect temp (0.25f, 0, 0.5f, 0.88888888889f);
+	this->m_viewMap = sf::View (sf::FloatRect(0, 0, MAPX, MAPY));
+	sf::FloatRect temp (0.25f, 0, 0.5f, 0.89f);
 	this->m_viewMap.setViewport(temp);
 	window.setView(m_viewMap);
+
+	this->refreshRate = 200;
 
 	this->m_database = Database();
 	m_posCam = m_database.m_player.getPosition();
@@ -56,7 +57,7 @@ void GameLoop::startRun()
 		refreshDate = 0;
 		while (true)
 		{
-			while (clock() - refreshDate < 200);//Wait at least 0.1s before refreshing (10fps max)
+			while (clock() - refreshDate < refreshRate);//Wait at least 0.1s before refreshing (10fps max)
 			do
 			{
 				playerAction = getMouvement();//Getting the User Input
@@ -88,28 +89,28 @@ std::string GameLoop::getMouvement()
 	{
 		retour = "camRight";
 		m_posCam.posX++;
-		m_viewMap.move(32, 0);
+		m_viewMap.move(TILE_SIZE, 0);
 		window.setView(m_viewMap);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
 		retour = "camLeft";
 		m_posCam.posX--;
-		m_viewMap.move(-32, 0);
+		m_viewMap.move(-TILE_SIZE, 0);
 		window.setView(m_viewMap);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
 		retour = "camUp";
 		m_posCam.posY--;
-		m_viewMap.move(0, -32);
+		m_viewMap.move(0, -TILE_SIZE);
 		window.setView(m_viewMap);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
 		retour = "camDown";
 		m_posCam.posY++;
-		m_viewMap.move(0, 32);
+		m_viewMap.move(0, TILE_SIZE);
 		window.setView(m_viewMap);
 	}
 
@@ -297,7 +298,7 @@ void GameLoop::displayAll()
 
 void GameLoop::setViewOnPlayer()
 {
-	m_viewMap.setCenter(((this->m_database.m_player.getPosX()) * 32) + 16, ((this->m_database.m_player.getPosY()) * 32) + 16);
+	m_viewMap.setCenter(((this->m_database.m_player.getPosX()) * TILE_SIZE) + 16, ((this->m_database.m_player.getPosY()) * TILE_SIZE) + 16);
 	m_posCam = this->m_database.m_player.getPosition();
 	window.setView(m_viewMap);
 }

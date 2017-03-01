@@ -3,30 +3,36 @@
 Display::Display()
 {
 	//std::cout << "SpritesDb Init" << std::endl;
-	
-	this->rectUnknow = sf::IntRect(64, 0, 32, 32);
-	this->rectDeflt = sf::IntRect(704, 736, 32, 32);
-	this->rectBrickFloor = sf::IntRect(32, 736, 32, 32);
-	this->rectDoor_closed = sf::IntRect(96, 704, 32, 32);
-	this->rectDoor_open = sf::IntRect(192, 704, 32, 32);
-	this->rectStairsDown = sf::IntRect(482, 704, 32, 32);
-	this->rectStairsUp = sf::IntRect(384, 704, 32, 32);
-	this->rectPlayer = sf::IntRect(96, 448, 32, 32);
-	this->rectEnnemi = sf::IntRect(1280, 512, 32, 32);
-	this->rectEmergium = sf::IntRect(704, 768, 32, 32);
+	//Tiles:
+	this->rectUnknow = sf::IntRect(64, 0, TILE_SIZE, TILE_SIZE);
+	this->rectDeflt = sf::IntRect(704, 736, TILE_SIZE, TILE_SIZE);
+	this->rectBrickFloor = sf::IntRect(32, 736, TILE_SIZE, TILE_SIZE);
+	this->rectDoor_closed = sf::IntRect(96, 704, TILE_SIZE, TILE_SIZE);
+	this->rectDoor_open = sf::IntRect(192, 704, TILE_SIZE, TILE_SIZE);
+	this->rectStairsDown = sf::IntRect(482, 704, TILE_SIZE, TILE_SIZE);
+	this->rectStairsUp = sf::IntRect(384, 704, TILE_SIZE, TILE_SIZE);	
+	this->rectEmergium = sf::IntRect(704, 768, TILE_SIZE, TILE_SIZE);
+
+	//Entities
+	this->rectPlayer = sf::IntRect(96, 448, TILE_SIZE, TILE_SIZE);
+	this->rectEnnemiInactif = sf::IntRect(896, 640, TILE_SIZE, TILE_SIZE);
+	this->rectEnnemiPatrol = sf::IntRect(1216, 640, TILE_SIZE, TILE_SIZE);
+	this->rectEnnemiDefence = sf::IntRect(1344, 640, TILE_SIZE, TILE_SIZE);
+	this->rectUnknowEntity = sf::IntRect(0, 800, TILE_SIZE, TILE_SIZE);
+
 	if (!this->text32x32.loadFromFile("32x32.png", sf::IntRect(0, 0, 4096, 960)))
 	{
 		std::cout << "ERROR 32x32.png not found" << std::endl;
 	}
-	if (!this->IHM_Left.loadFromFile("IHM_Left.png", sf::IntRect(0, 0, 400, 900)))
+	if (!this->IHM_Left.loadFromFile("IHM_Left.png", sf::IntRect(0, 0, 0.25*WINDOWX, WINDOWY)))
 	{
 		std::cout << "ERROR IHM_Left.png not found" << std::endl;
 	}
-	if (!this->IHM_Right.loadFromFile("IHM_Right.png", sf::IntRect(0, 0, 400, 900)))
+	if (!this->IHM_Right.loadFromFile("IHM_Right.png", sf::IntRect(0, 0, 0.25*WINDOWX, WINDOWY)))
 	{
 		std::cout << "ERROR IHM_Right.png not found" << std::endl;
 	}
-	if (!this->IHM_Bottom.loadFromFile("IHM_Bottom.png", sf::IntRect(0, 0, 800, 100)))
+	if (!this->IHM_Bottom.loadFromFile("IHM_Bottom.png", sf::IntRect(0, 0, 0.5*WINDOWX, 0.11*WINDOWY)))
 	{
 		std::cout << "ERROR IHM_Bottom.png not found" << std::endl;
 	}
@@ -39,11 +45,11 @@ Display::Display()
 void Display::tileDisplay(Tile tile, bool fade)
 {
 	sf::Sprite sprite;
-	sprite.setPosition((float)(tile.getX() * 32.f), (float)(tile.getY() * 32.f));
+	sprite.setPosition((float)(tile.getX() * TILE_SIZE), (float)(tile.getY() * TILE_SIZE));
 	sprite.setTexture(this->text32x32);
 
 	sf::CircleShape shape(16.f);
-	shape.setPosition((float)(tile.getX() * 32.f), (float)(tile.getY() * 32.f));
+	shape.setPosition((float)(tile.getX() * TILE_SIZE), (float)(tile.getY() * TILE_SIZE));
 	switch (tile.getType())
 	{
 	default:
@@ -81,9 +87,24 @@ void Display::tileDisplay(Tile tile, bool fade)
 void Display::entityDisplay(Entity entity)
 {	
 	sf::Sprite sprite;
-	sprite.setPosition((float)(entity.getPosX() * 32.f), (float)(entity.getPosY() * 32.f));
+	sprite.setPosition((float)(entity.getPosX() * TILE_SIZE), (float)(entity.getPosY() * TILE_SIZE));
 	sprite.setTexture(this->text32x32);
-	sprite.setTextureRect(this->rectPlayer);
+	switch (entity.getType())
+	{
+	default:
+		sprite.setTextureRect(this->rectUnknowEntity);
+		break;
+	case unknow:
+		sprite.setTextureRect(this->rectUnknowEntity);
+		break;
+	case player:
+		sprite.setTextureRect(this->rectPlayer);
+		break;
+	case ennemi:
+		//WIP!!!!! Switch ennemi state!!!!!
+		sprite.setTextureRect(this->rectPlayer);
+		break;
+	}
 	window.draw(sprite);
 	/*
 	sf::CircleShape shape(5.f);
@@ -96,7 +117,7 @@ void Display::entityDisplay(Entity entity)
 void Display::entityDisplay(Movable entity)
 {
 	sf::Sprite sprite;
-	sprite.setPosition((float)(entity.getPosX() * 32.f), (float)(entity.getPosY() * 32.f));
+	sprite.setPosition((float)(entity.getPosX() * TILE_SIZE), (float)(entity.getPosY() * TILE_SIZE));
 	sprite.setTexture(this->text32x32);
 	sprite.setTextureRect(this->rectPlayer);
 	window.draw(sprite);
@@ -111,18 +132,19 @@ void Display::displayLevel(int level)
 
 	sf::Sprite spriteIHM_Bottom;
 	spriteIHM_Bottom.setTexture(this->IHM_Bottom);
-	spriteIHM_Bottom.setPosition(400, 800);
+	spriteIHM_Bottom.setPosition(0.25*WINDOWX, 0.89*WINDOWY);
 	window.draw(spriteIHM_Bottom);
 
 	sf::Sprite spriteIHM_Right;
 	spriteIHM_Right.setTexture(this->IHM_Right);
-	spriteIHM_Right.setPosition(1200, 0);
+	spriteIHM_Right.setPosition(0.75*WINDOWX, 0);
 	window.draw(spriteIHM_Right);
 
 	std::string temp = "Level : ";	
 	temp += std::to_string(level);
 	
 	text.setFont(font);
+	text.setPosition(15, 10);
 	//text.setColor(sf::Color::Green);
 	text.setString(temp);
 	window.draw(text);

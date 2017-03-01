@@ -20,8 +20,10 @@ public:
 
 	void setView(int view);
 	int getView();
+	entitiesType getType();
 
 protected:
+	entitiesType m_type;
 	int m_view;
 	int m_id;
 	std::string m_name;
