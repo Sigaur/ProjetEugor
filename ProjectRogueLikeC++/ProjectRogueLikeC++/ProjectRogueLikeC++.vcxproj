@@ -18,6 +18,26 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\carte.cpp" />
+    <ClCompile Include="src\Database.cpp" />
+    <ClCompile Include="src\display.cpp" />
+    <ClCompile Include="src\entity.cpp" />
+    <ClCompile Include="src\GameLoop.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Movable.cpp" />
+    <ClCompile Include="src\tile.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\carte.h" />
+    <ClInclude Include="include\common.h" />
+    <ClInclude Include="include\Database.h" />
+    <ClInclude Include="include\display.h" />
+    <ClInclude Include="include\entity.h" />
+    <ClInclude Include="include\GameLoop.h" />
+    <ClInclude Include="include\Movable.h" />
+    <ClInclude Include="include\tile.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{EA5A1257-4027-451F-ACB2-2D47B5979DB4}</ProjectGuid>
     <RootNamespace>ProjectRogueLikeC</RootNamespace>
@@ -117,26 +137,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Carte.cpp" />
-    <ClCompile Include="Database.cpp" />
-    <ClCompile Include="Display.cpp" />
-    <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="GameLoop.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Movable.cpp" />
-    <ClCompile Include="Tile.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Carte.h" />
-    <ClInclude Include="Common.h" />
-    <ClInclude Include="Database.h" />
-    <ClInclude Include="Display.h" />
-    <ClInclude Include="Entity.h" />
-    <ClInclude Include="GameLoop.h" />
-    <ClInclude Include="Movable.h" />
-    <ClInclude Include="Tile.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
