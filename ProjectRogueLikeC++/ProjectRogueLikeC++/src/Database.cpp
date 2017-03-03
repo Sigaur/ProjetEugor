@@ -19,6 +19,10 @@ void Database::createLevel(int seed)
 {
 	this->m_carte.setTest();
 	this->m_carte.dungeonTest(seed);
+
+	//creating ennemis
+	Position posEnnemi = this->m_carte.getRandomFreeSpace();
+	this->m_ennemis.push_back(Ennemi(1, "Premier Ennemi", posEnnemi.posX, posEnnemi.posY, 1));
 }
 
 void Database::displayAll()
@@ -378,4 +382,15 @@ void Database::displayTile(Position position, bool fade)
 void Database::displayEntities()
 {
 	this->m_display.entityDisplay(this->m_player);
+	for (int i = 0; i < this->m_ennemis.size(); i++)
+	{
+		for (int j = 0; j < this->m_visible.size(); j++)
+		{
+			if (this->m_ennemis[i].getPosX() == this->m_visible[j].posX &&
+				this->m_ennemis[i].getPosY() == this->m_visible[j].posY)
+			{
+				this->m_display.entityDisplay(this->m_ennemis[i]);
+			}
+		}
+	}
 }

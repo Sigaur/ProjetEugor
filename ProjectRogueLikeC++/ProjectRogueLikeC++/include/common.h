@@ -24,9 +24,16 @@ enum tileType
 };
 enum entitiesType
 {
-	unknow,
+	unknowEntity,
 	player,
 	ennemi
+};
+enum ennemiState
+{
+	inactif,
+	patrol,
+	defence,
+	seek
 };
 typedef struct Position
 {

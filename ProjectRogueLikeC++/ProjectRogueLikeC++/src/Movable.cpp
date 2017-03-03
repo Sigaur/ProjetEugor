@@ -10,6 +10,7 @@ Movable::Movable()
 	this->m_posX = 0;
 	this->m_speed = 1;
 	this->m_lastAction = 0;
+	this->m_type = unknowEntity;
 }
 
 Movable::Movable(int id, std::string name, int posX, int posY, int speed)
@@ -20,6 +21,7 @@ Movable::Movable(int id, std::string name, int posX, int posY, int speed)
 	this->m_posY = posY;
 	this->m_speed = speed;
 	this->m_lastAction = 0;
+	this->m_type = unknowEntity;
 }
 
 Movable::~Movable()

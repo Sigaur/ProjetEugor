@@ -1,6 +1,6 @@
 #pragma once
 #include "Carte.h"
-#include "Movable.h"
+#include "Ennemi.h"
 
 class Display {
 public:
@@ -9,6 +9,7 @@ public:
 
 	void entityDisplay(Entity entity);
 	void entityDisplay(Movable entity);
+	void entityDisplay(Ennemi ennemi);
 
 	void displayLevel(int level);
 

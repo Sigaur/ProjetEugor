@@ -22,6 +22,7 @@ public:
 	
 	Carte m_carte;
 	Movable m_player;
+	std::vector< Ennemi > m_ennemis;
 	Display m_display;
 
 	std::vector< std::vector <bool> > m_doors;

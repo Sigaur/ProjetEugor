@@ -20,23 +20,23 @@ Display::Display()
 	this->rectEnnemiDefence = sf::IntRect(1344, 640, TILE_SIZE, TILE_SIZE);
 	this->rectUnknowEntity = sf::IntRect(0, 800, TILE_SIZE, TILE_SIZE);
 
-	if (!this->text32x32.loadFromFile("32x32.png", sf::IntRect(0, 0, 4096, 960)))
+	if (!this->text32x32.loadFromFile("image/32x32.png", sf::IntRect(0, 0, 4096, 960)))
 	{
 		std::cout << "ERROR 32x32.png not found" << std::endl;
 	}
-	if (!this->IHM_Left.loadFromFile("IHM_Left.png", sf::IntRect(0, 0, 0.25*WINDOWX, WINDOWY)))
+	if (!this->IHM_Left.loadFromFile("image/IHM_Left.png", sf::IntRect(0, 0, 0.25*WINDOWX, WINDOWY)))
 	{
 		std::cout << "ERROR IHM_Left.png not found" << std::endl;
 	}
-	if (!this->IHM_Right.loadFromFile("IHM_Right.png", sf::IntRect(0, 0, 0.25*WINDOWX, WINDOWY)))
+	if (!this->IHM_Right.loadFromFile("image/IHM_Right.png", sf::IntRect(0, 0, 0.25*WINDOWX, WINDOWY)))
 	{
 		std::cout << "ERROR IHM_Right.png not found" << std::endl;
 	}
-	if (!this->IHM_Bottom.loadFromFile("IHM_Bottom.png", sf::IntRect(0, 0, 0.5*WINDOWX, 0.11*WINDOWY)))
+	if (!this->IHM_Bottom.loadFromFile("image/IHM_Bottom.png", sf::IntRect(0, 0, 0.5*WINDOWX, 0.11*WINDOWY)))
 	{
 		std::cout << "ERROR IHM_Bottom.png not found" << std::endl;
 	}
-	if (!font.loadFromFile("DODG5.ttf"))
+	if (!font.loadFromFile("font/DODG5.ttf"))
 	{
 		std::cout << "ERROR DODG5.ttf not found" << std::endl;
 	}
@@ -100,8 +100,36 @@ void Display::entityDisplay(Entity entity)
 	case player:
 		sprite.setTextureRect(this->rectPlayer);
 		break;
-	case ennemi:
-		//WIP!!!!! Switch ennemi state!!!!!
+	}
+	window.draw(sprite);
+	/*
+	sf::CircleShape shape(5.f);
+	shape.setPosition((float)(entity.getPosX() * 10.f), (float)(entity.getPosY() * 10.f));
+	shape.setFillColor(sf::Color::Green);
+	window.draw(shape);
+	*/
+}
+
+void Display::entityDisplay(Ennemi ennemi)
+{
+	sf::Sprite sprite;
+	sprite.setPosition((float)(ennemi.getPosX() * TILE_SIZE), (float)(ennemi.getPosY() * TILE_SIZE));
+	sprite.setTexture(this->text32x32);
+	switch (ennemi.getState())
+	{
+	default:
+		sprite.setTextureRect(this->rectUnknowEntity);
+		break;
+	case inactif:
+		sprite.setTextureRect(this->rectEnnemiInactif);
+		break;
+	case patrol:
+		sprite.setTextureRect(this->rectEnnemiPatrol);
+		break;
+	case defence:
+		sprite.setTextureRect(this->rectEnnemiDefence);
+		break;
+	case seek:
 		sprite.setTextureRect(this->rectPlayer);
 		break;
 	}
