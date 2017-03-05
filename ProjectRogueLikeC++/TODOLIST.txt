@@ -1,0 +1,2 @@
+-Put the updates ennemies and FOV of database.cpp into the updatesAll
+-Asking if the tile can be walked must be asked to the database and not the map (interactions with the ennemies)

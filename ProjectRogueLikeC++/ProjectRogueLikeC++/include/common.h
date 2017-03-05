@@ -22,12 +22,14 @@ enum tileType
 	////Ores
 	emergium
 };
+
 enum entitiesType
 {
 	unknowEntity,
 	player,
 	ennemi
 };
+
 enum ennemiState
 {
 	inactif,
@@ -35,6 +37,12 @@ enum ennemiState
 	defence,
 	seek
 };
+
+enum monsterType
+{
+	skeleton
+};
+
 typedef struct Position
 {
 	int posX;

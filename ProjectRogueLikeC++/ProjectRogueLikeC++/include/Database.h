@@ -19,6 +19,7 @@ public:
 	void displayTile(Position position, bool fade);
 
 	void displayEntities();
+	void updateEnnemies();
 	
 	Carte m_carte;
 	Movable m_player;
@@ -29,6 +30,7 @@ public:
 	std::vector< std::vector< std::vector <bool> > > m_explored;
 
 	std::vector<Position> m_visible;//All the postions visible by the player at the moment
+	std::vector<Ennemi> m_visibleEnnemies;
 
 private:
 };

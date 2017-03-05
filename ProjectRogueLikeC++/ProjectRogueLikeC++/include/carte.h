@@ -43,6 +43,8 @@ public:
 	int getNoCols();
 	int getNoRows();
 	void setSize(int cols, int rows);
+
+	void setWalkable(int x1, int y1, bool isWalkable);
 private:
 	int no_of_cols;
 	int no_of_rows;

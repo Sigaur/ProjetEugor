@@ -216,6 +216,11 @@ bool Carte::isWalkable(int x1, int y1)
 	return this->m_matrix[x1][y1].isWalkable();
 }
 
+void Carte::setWalkable(int x1, int y1, bool isWalkable)
+{
+	this->m_matrix[x1][y1].setWalkable(isWalkable);
+}
+
 bool Carte::isSeeThr(int x1, int y1)
 {
 	return this->m_matrix[x1][y1].isSeeThr();

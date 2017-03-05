@@ -73,7 +73,8 @@ void GameLoop::startRun()
 
 			if (numberOfLastAction > 1)
 				refreshDate -= 125;
-
+			
+			updateAll();
 			displayAll();
 		}
 	}
@@ -294,6 +295,11 @@ void GameLoop::displayAll()
 	else
 		this->m_database.displayAll(m_posCam.posX, m_posCam.posY);	
 	window.display();
+}
+
+void GameLoop::updateAll()
+{
+	this->m_database.updateEnnemies();
 }
 
 void GameLoop::setViewOnPlayer()

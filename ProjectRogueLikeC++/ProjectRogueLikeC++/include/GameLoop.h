@@ -11,6 +11,7 @@ public:
 	void startRun();
 	void displayAll();
 	void setViewOnPlayer();
+	void updateAll();
 	
 	std::string getMouvement();	
 private:
