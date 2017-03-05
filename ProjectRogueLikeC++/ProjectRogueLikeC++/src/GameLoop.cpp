@@ -121,72 +121,96 @@ std::string GameLoop::getMouvement()
 		{
 			if (this->m_database.m_carte.walking(this->m_database.m_player.getPosX() + 1, this->m_database.m_player.getPosY()))
 			{
-				retour = "right";
-				this->m_database.m_player.move(retour);
-				setViewOnPlayer();
+				if (this->m_database.getInteraction(this->m_database.m_player.getPosX() + 1, this->m_database.m_player.getPosY()))
+				{
+					retour = "right";
+					this->m_database.m_player.move(retour);
+					setViewOnPlayer();
+				}
 			}
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad4))
 		{
 			if (this->m_database.m_carte.walking(this->m_database.m_player.getPosX() - 1, this->m_database.m_player.getPosY()))
 			{
-				retour = "left";
-				this->m_database.m_player.move(retour);
-				setViewOnPlayer();
+				if (this->m_database.getInteraction(this->m_database.m_player.getPosX() - 1, this->m_database.m_player.getPosY()))
+				{
+					retour = "left";
+					this->m_database.m_player.move(retour);
+					setViewOnPlayer();
+				}
 			}
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad8))
 		{
 			if (this->m_database.m_carte.walking(this->m_database.m_player.getPosX(), this->m_database.m_player.getPosY() - 1))
 			{
-				retour = "up";
-				this->m_database.m_player.move(retour);
-				setViewOnPlayer();
+				if (this->m_database.getInteraction(this->m_database.m_player.getPosX(), this->m_database.m_player.getPosY() - 1))
+				{
+					retour = "up";
+					this->m_database.m_player.move(retour);
+					setViewOnPlayer();
+				}
 			}
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad2))
 		{
 			if (this->m_database.m_carte.walking(this->m_database.m_player.getPosX(), this->m_database.m_player.getPosY() + 1))
 			{
-				retour = "down";
-				this->m_database.m_player.move(retour);
-				setViewOnPlayer();
+				if (this->m_database.getInteraction(this->m_database.m_player.getPosX(), this->m_database.m_player.getPosY() + 1))
+				{
+					retour = "down";
+					this->m_database.m_player.move(retour);
+					setViewOnPlayer();
+				}
 			}
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad9))
 		{
 			if (this->m_database.m_carte.walking(this->m_database.m_player.getPosX() + 1, this->m_database.m_player.getPosY() - 1))
 			{
-				retour = "upRight";
-				this->m_database.m_player.move(retour);
-				setViewOnPlayer();
+				if (this->m_database.getInteraction(this->m_database.m_player.getPosX() + 1, this->m_database.m_player.getPosY() - 1))
+				{
+					retour = "upRight";
+					this->m_database.m_player.move(retour);
+					setViewOnPlayer();
+				}
 			}
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad7))
 		{
 			if (this->m_database.m_carte.walking(this->m_database.m_player.getPosX() - 1, this->m_database.m_player.getPosY() - 1))
 			{
-				retour = "upLeft";
-				this->m_database.m_player.move(retour);
-				setViewOnPlayer();
+				if (this->m_database.getInteraction(this->m_database.m_player.getPosX() - 1, this->m_database.m_player.getPosY() - 1))
+				{
+					retour = "upLeft";
+					this->m_database.m_player.move(retour);
+					setViewOnPlayer();
+				}
 			}
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad3))
 		{
 			if (this->m_database.m_carte.walking(this->m_database.m_player.getPosX() + 1, this->m_database.m_player.getPosY() + 1))
 			{
-				retour = "downRight";
-				this->m_database.m_player.move(retour);
-				setViewOnPlayer();
+				if (this->m_database.getInteraction(this->m_database.m_player.getPosX() + 1, this->m_database.m_player.getPosY() + 1))
+				{
+					retour = "downRight";
+					this->m_database.m_player.move(retour);
+					setViewOnPlayer();
+				}
 			}
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad1))
 		{
 			if (this->m_database.m_carte.walking(this->m_database.m_player.getPosX() - 1, this->m_database.m_player.getPosY() + 1))
 			{
-				retour = "downLeft";
-				this->m_database.m_player.move(retour);
-				setViewOnPlayer();
+				if (this->m_database.getInteraction(this->m_database.m_player.getPosX() - 1, this->m_database.m_player.getPosY() + 1))
+				{
+					retour = "downLeft";
+					this->m_database.m_player.move(retour);
+					setViewOnPlayer();
+				}
 			}
 		}
 		//Switching Levels//To Be cleaned

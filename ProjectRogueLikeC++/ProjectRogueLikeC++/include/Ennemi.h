@@ -15,6 +15,8 @@ public:
 	void takeDamage(int damage);
 	void update();
 
+	bool isAlive();
+
 protected:
 	ennemiState m_state;
 	monsterType m_monsterType;

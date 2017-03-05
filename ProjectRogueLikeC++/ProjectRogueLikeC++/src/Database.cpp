@@ -22,8 +22,8 @@ void Database::createLevel(int seed)
 
 	//creating ennemis
 	Position posEnnemi = this->m_carte.getRandomFreeSpace();
-	this->m_ennemis.push_back(Ennemi(1, "Premier Ennemi", posEnnemi.posX, posEnnemi.posY, 1));
-	this->m_carte.setWalkable(posEnnemi.posX, posEnnemi.posY, 0);
+	this->m_ennemis.push_back(new Ennemi(1, posEnnemi.posX, posEnnemi.posY, skeleton));
+	//this->m_carte.setWalkable(posEnnemi.posX, posEnnemi.posY, 0);
 }
 
 void Database::displayAll()
@@ -382,8 +382,7 @@ void Database::displayTile(Position position, bool fade)
 }
 
 void Database::displayEntities()
-{
-	this->m_display.entityDisplay(this->m_player);
+{	this->m_display.entityDisplay(this->m_player);
 	for (int i = 0; i < this->m_visibleEnnemies.size(); i++)
 	{
 		this->m_display.entityDisplay(this->m_visibleEnnemies[i]);
@@ -395,13 +394,38 @@ void Database::updateEnnemies()
 	this->m_visibleEnnemies.clear();
 	for (int i = 0; i < this->m_ennemis.size(); i++)
 	{
+		if (!m_ennemis[i]->isAlive())
+		{
+			m_ennemis[i]->~Ennemi();
+			this->m_ennemis.erase(this->m_ennemis.begin() + i);
+			std::cout << "Ennemi killed" << std::endl;
+		}		
+	}
+	for (int i = 0; i < this->m_ennemis.size(); i++)
+	{
 		for (int j = 0; j < this->m_visible.size(); j++)
 		{
-			if (this->m_ennemis[i].getPosX() == this->m_visible[j].posX &&
-				this->m_ennemis[i].getPosY() == this->m_visible[j].posY)
+			if (this->m_ennemis[i]->getPosX() == this->m_visible[j].posX &&
+				this->m_ennemis[i]->getPosY() == this->m_visible[j].posY)
 			{
 				this->m_visibleEnnemies.push_back(this->m_ennemis[i]);
 			}
 		}
 	}
+}
+
+bool Database::getInteraction(int x1, int y1)
+{
+	for (int i = 0; i < this->m_visibleEnnemies.size(); i++)
+	{
+		if (x1 == this->m_visibleEnnemies[i]->getPosX() && y1 == this->m_visibleEnnemies[i]->getPosY())
+		{
+			/////////////Interaction with ennemi
+			this->m_visibleEnnemies[i]->takeDamage(10);
+			std::cout << "Get Damage" << std::endl;
+			//return (!this->m_visibleEnnemies[i]->isAlive());
+			return false;
+		}
+	}
+	return true;
 }

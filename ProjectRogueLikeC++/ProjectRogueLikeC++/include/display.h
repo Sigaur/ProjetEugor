@@ -10,6 +10,7 @@ public:
 	void entityDisplay(Entity entity);
 	void entityDisplay(Movable entity);
 	void entityDisplay(Ennemi ennemi);
+	void entityDisplay(Ennemi* ennemi);
 
 	void displayLevel(int level);
 

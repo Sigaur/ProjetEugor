@@ -134,12 +134,32 @@ void Display::entityDisplay(Ennemi ennemi)
 		break;
 	}
 	window.draw(sprite);
-	/*
-	sf::CircleShape shape(5.f);
-	shape.setPosition((float)(entity.getPosX() * 10.f), (float)(entity.getPosY() * 10.f));
-	shape.setFillColor(sf::Color::Green);
-	window.draw(shape);
-	*/
+}
+
+void Display::entityDisplay(Ennemi* ennemi)
+{
+	sf::Sprite sprite;
+	sprite.setPosition((float)(ennemi->getPosX() * TILE_SIZE), (float)(ennemi->getPosY() * TILE_SIZE));
+	sprite.setTexture(this->text32x32);
+	switch (ennemi->getState())
+	{
+	default:
+		sprite.setTextureRect(this->rectUnknowEntity);
+		break;
+	case inactif:
+		sprite.setTextureRect(this->rectEnnemiInactif);
+		break;
+	case patrol:
+		sprite.setTextureRect(this->rectEnnemiPatrol);
+		break;
+	case defence:
+		sprite.setTextureRect(this->rectEnnemiDefence);
+		break;
+	case seek:
+		sprite.setTextureRect(this->rectPlayer);
+		break;
+	}
+	window.draw(sprite);
 }
 
 void Display::entityDisplay(Movable entity)

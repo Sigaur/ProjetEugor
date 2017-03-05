@@ -36,13 +36,14 @@ Ennemi::Ennemi(int id, int posX, int posY, monsterType type)
 			this->m_lastAction = 0;
 			this->m_type = ennemi;
 			this->m_state = patrol;
-
+			this->m_health = 50;
 			break;
 	}
 }
 
 Ennemi::~Ennemi()
 {
+	std::cout << "Ennemi killed by Destructor" << std::endl;
 }
 
 ennemiState Ennemi::getState()
@@ -62,8 +63,14 @@ void Ennemi::takeDamage(int damage)
 
 void Ennemi::update()
 {
-	if (m_health <= 0)
-	{
-		delete this;
-	}
+	
+}
+
+bool Ennemi::isAlive()
+{
+	std::cout << "Life : " << this->m_health << std::endl;
+	if (this->m_health > 0)
+		return true;
+	else
+		return false;
 }
