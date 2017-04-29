@@ -48,3 +48,15 @@ typedef struct Position
 	int posX;
 	int posY;
 };
+
+enum direction
+{
+	right,
+	left,
+	up,
+	down,
+	upRight,
+	upLeft,
+	downRight,
+	downLeft
+};

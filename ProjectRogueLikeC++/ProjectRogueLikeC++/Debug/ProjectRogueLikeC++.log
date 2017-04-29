@@ -1,17 +1,29 @@
-﻿  tile.cpp
-c:\users\marcgayraud\work\projeteugor\projectroguelikec++\projectroguelikec++\src\tile.cpp(1): fatal error C1083: Cannot open include file: 'Tile.h': No such file or directory
-  Movable.cpp
-c:\users\marcgayraud\work\projeteugor\projectroguelikec++\projectroguelikec++\src\movable.cpp(1): fatal error C1083: Cannot open include file: 'Movable.h': No such file or directory
-  main.cpp
-c:\users\marcgayraud\work\projeteugor\projectroguelikec++\projectroguelikec++\src\main.cpp(1): fatal error C1083: Cannot open include file: 'GameLoop.h': No such file or directory
-  GameLoop.cpp
-c:\users\marcgayraud\work\projeteugor\projectroguelikec++\projectroguelikec++\src\gameloop.cpp(1): fatal error C1083: Cannot open include file: 'GameLoop.h': No such file or directory
-  entity.cpp
-c:\users\marcgayraud\work\projeteugor\projectroguelikec++\projectroguelikec++\src\entity.cpp(1): fatal error C1083: Cannot open include file: 'Entity.h': No such file or directory
-  display.cpp
-c:\users\marcgayraud\work\projeteugor\projectroguelikec++\projectroguelikec++\src\display.cpp(1): fatal error C1083: Cannot open include file: 'Display.h': No such file or directory
+﻿  Ennemi.cpp
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\include\common.h(50): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\ennemi.cpp(20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Database.cpp
-c:\users\marcgayraud\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(1): fatal error C1083: Cannot open include file: 'Database.h': No such file or directory
-  carte.cpp
-c:\users\marcgayraud\work\projeteugor\projectroguelikec++\projectroguelikec++\src\carte.cpp(1): fatal error C1083: Cannot open include file: 'Carte.h': No such file or directory
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\include\common.h(50): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(224): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(262): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(300): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(338): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(391): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(400): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(408): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(410): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(423): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(446): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(439): warning C4101: 'tempPosInit': unreferenced local variable
   Generating Code...
+  Compiling...
+  display.cpp
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\include\common.h(50): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\display.cpp(27): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\display.cpp(31): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\display.cpp(35): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  GameLoop.cpp
+  ProjectRogueLikeC++.vcxproj -> C:\Users\Seven_8\Work\ProjetEugor\ProjectRogueLikeC++\Debug\ProjectRogueLikeC++.exe
+  ProjectRogueLikeC++.vcxproj -> C:\Users\Seven_8\Work\ProjetEugor\ProjectRogueLikeC++\Debug\ProjectRogueLikeC++.pdb (Partial PDB)

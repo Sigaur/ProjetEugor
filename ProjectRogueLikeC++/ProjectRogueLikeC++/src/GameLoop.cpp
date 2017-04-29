@@ -324,6 +324,7 @@ void GameLoop::displayAll()
 void GameLoop::updateAll()
 {
 	this->m_database.updateEnnemies();
+	this->m_database.ennemiesMouvement();
 }
 
 void GameLoop::setViewOnPlayer()

@@ -12,6 +12,7 @@ Database::Database()
 
 Database::~Database()
 {
+
 }
 
 
@@ -22,7 +23,11 @@ void Database::createLevel(int seed)
 
 	//creating ennemis
 	Position posEnnemi = this->m_carte.getRandomFreeSpace();
-	this->m_ennemis.push_back(new Ennemi(1, posEnnemi.posX, posEnnemi.posY, skeleton));
+	Position objectif;
+	objectif.posX = 24;
+	objectif.posY = 26;
+	//this->m_ennemis.push_back(new Ennemi(1, posEnnemi.posX, posEnnemi.posY, skeleton));
+	this->m_ennemis.push_back(new Ennemi(1, 24, 24, skeleton, patrol, objectif));
 	//this->m_carte.setWalkable(posEnnemi.posX, posEnnemi.posY, 0);
 }
 
@@ -398,7 +403,6 @@ void Database::updateEnnemies()
 		{
 			m_ennemis[i]->~Ennemi();
 			this->m_ennemis.erase(this->m_ennemis.begin() + i);
-			std::cout << "Ennemi killed" << std::endl;
 		}		
 	}
 	for (int i = 0; i < this->m_ennemis.size(); i++)
@@ -422,10 +426,201 @@ bool Database::getInteraction(int x1, int y1)
 		{
 			/////////////Interaction with ennemi
 			this->m_visibleEnnemies[i]->takeDamage(10);
-			std::cout << "Get Damage" << std::endl;
 			//return (!this->m_visibleEnnemies[i]->isAlive());
 			return false;
 		}
 	}
 	return true;
+}
+
+void Database::ennemiesMouvement()
+{
+	Position tempObjectif;
+	Position tempPosInit;
+	Position tempPosition;
+
+	Ennemi *tempEnnemi;
+
+	int xDiff, yDiff;
+	std::cout << "Ennemies Mouvement" << std::endl;
+	for (int i = 0; i < this->m_ennemis.size(); i++)
+	{
+		tempEnnemi = this->m_ennemis[i];
+		switch (tempEnnemi->getState())
+		{
+		case patrol:
+			std::cout << "Ennemies Mouvement1" << std::endl;
+			tempPosition = tempEnnemi->getPosition();
+			tempObjectif = tempEnnemi->getObjectif();
+			xDiff = tempObjectif.posX - tempPosition.posX;
+			yDiff = tempObjectif.posY - tempPosition.posY;
+
+
+			std::cout << "xDiff" << xDiff << "yDiff" << yDiff << std::endl;
+
+			if (xDiff > 0)
+			{
+
+				std::cout << "trace 1" << std::endl;
+				if (yDiff > 0)
+				{
+					if (moveCheck(tempPosition, downRight))
+					{
+						std::cout << "downRight" << std::endl;
+						tempEnnemi->moveDownRight();
+					}
+				}
+				else if (yDiff < 0)
+				{
+					if (moveCheck(tempPosition, upRight))
+					{
+						std::cout << "upRight" << std::endl;
+						tempEnnemi->moveUpRight();
+					}
+				}
+				else
+					if (moveCheck(tempPosition, right))
+					{
+						std::cout << "right" << std::endl;
+						tempEnnemi->moveRight();
+					}
+			}
+			else if (xDiff < 0)
+			{
+				if (yDiff > 0)
+				{
+					if (moveCheck(tempPosition, downLeft))
+					{
+						std::cout << "downLeft" << std::endl;
+						tempEnnemi->moveDownLeft();
+					}
+				}
+				else if (yDiff < 0)
+				{
+					if (moveCheck(tempPosition, upLeft))
+					{
+						std::cout << "upLeft" << std::endl;
+						tempEnnemi->moveUpLeft();
+					}
+				}
+				else
+					if (moveCheck(tempPosition, left))
+					{
+						std::cout << "left" << std::endl;
+						tempEnnemi->moveLeft();
+					}
+			}
+			else
+			{
+				if (yDiff > 0)
+				{
+					if (moveCheck(tempPosition, down))
+					{
+						std::cout << "down" << std::endl;
+						tempEnnemi->moveDown();
+					}
+				}
+				else if (yDiff < 0)
+				{
+					if (moveCheck(tempPosition, up))
+					{
+						std::cout << "up" << std::endl;
+						tempEnnemi->moveUp();
+					}
+				}
+			}
+			break;
+		}
+		if ((tempEnnemi->getPreviousPosition().posX == tempEnnemi->getPosition().posX) &&
+			(tempEnnemi->getPreviousPosition().posX == tempEnnemi->getPosition().posX))
+		{
+
+		}
+	}
+	
+}
+
+bool Database::moveCheck(Position posInitial, direction move)
+{
+	switch (move)
+	{
+	case right:
+
+		std::cout << "trace2" << std::endl;
+		if (this->m_carte.walking(posInitial.posX + 1, posInitial.posY))
+		{
+			if (this->getInteraction(posInitial.posX + 1, posInitial.posY))
+			{
+				return true;
+			}
+		}
+		break;
+	case left:
+		if (this->m_carte.walking(posInitial.posX - 1, posInitial.posY))
+		{
+			if (this->getInteraction(posInitial.posX - 1, posInitial.posY))
+			{
+				return true;
+			}
+		}
+		break;
+	case up:
+		if (this->m_carte.walking(posInitial.posX, posInitial.posY - 1))
+		{
+			if (this->getInteraction(posInitial.posX, posInitial.posY - 1))
+			{
+				return true;
+			}
+		}
+		break;
+	case down:
+		if (this->m_carte.walking(posInitial.posX, posInitial.posY + 1))
+		{
+			if (this->getInteraction(posInitial.posX, posInitial.posY + 1))
+			{
+				return true;
+			}
+		}
+		break;
+	case upRight:
+		if (this->m_carte.walking(posInitial.posX + 1, posInitial.posY - 1))
+		{
+			if (this->getInteraction(posInitial.posX + 1, posInitial.posY - 1))
+			{
+				return true;
+			}
+		}
+		break;
+	case upLeft:
+		if (this->m_carte.walking(posInitial.posX - 1, posInitial.posY - 1))
+		{
+			if (this->getInteraction(posInitial.posX - 1, posInitial.posY - 1))
+			{
+				return true;
+			}
+		}
+		break;
+	case downRight:
+		if (this->m_carte.walking(posInitial.posX + 1, posInitial.posY + 1))
+		{
+			if (this->getInteraction(posInitial.posX + 1, posInitial.posY + 1))
+			{
+				return true;
+			}
+		}
+		break;
+	case downLeft:
+		if (this->m_carte.walking(posInitial.posX - 1, posInitial.posY + 1))
+		{
+			if (this->getInteraction(posInitial.posX - 1, posInitial.posY + 1))
+			{
+				return true;
+			}
+		}
+		break;
+	default:
+		return false;
+		break;
+	}
+	return false;
 }
