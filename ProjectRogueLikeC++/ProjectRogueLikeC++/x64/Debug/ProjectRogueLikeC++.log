@@ -1,0 +1,19 @@
+﻿  tile.cpp
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\tile.cpp(1): fatal error C1083: Cannot open include file: 'Tile.h': No such file or directory
+  Movable.cpp
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\movable.cpp(1): fatal error C1083: Cannot open include file: 'Movable.h': No such file or directory
+  main.cpp
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\main.cpp(1): fatal error C1083: Cannot open include file: 'GameLoop.h': No such file or directory
+  GameLoop.cpp
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\gameloop.cpp(1): fatal error C1083: Cannot open include file: 'GameLoop.h': No such file or directory
+  entity.cpp
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\entity.cpp(1): fatal error C1083: Cannot open include file: 'Entity.h': No such file or directory
+  Ennemi.cpp
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\ennemi.cpp(1): fatal error C1083: Cannot open include file: 'Ennemi.h': No such file or directory
+  display.cpp
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\display.cpp(1): fatal error C1083: Cannot open include file: 'Display.h': No such file or directory
+  Database.cpp
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(1): fatal error C1083: Cannot open include file: 'Database.h': No such file or directory
+  carte.cpp
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\carte.cpp(1): fatal error C1083: Cannot open include file: 'Carte.h': No such file or directory
+  Generating Code...

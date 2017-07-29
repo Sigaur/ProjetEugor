@@ -32,10 +32,9 @@ enum entitiesType
 
 enum ennemiState
 {
-	inactif,
-	patrol,
-	defence,
-	seek
+	station,
+	alert,
+	track
 };
 
 enum monsterType

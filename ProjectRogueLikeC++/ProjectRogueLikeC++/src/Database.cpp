@@ -4,8 +4,11 @@
 
 Database::Database()
 {
+	Position positionPlayer;
+	positionPlayer.posX = 25;
+	positionPlayer.posY = 25;
 	this->m_carte = Carte();
-	this->m_player = Movable(1, "Player", 25, 25, 2);
+	this->m_player = Movable(1, "Player", positionPlayer, 2);
 	this->m_display = Display();
 
 }
@@ -25,10 +28,16 @@ void Database::createLevel(int seed)
 	Position posEnnemi = this->m_carte.getRandomFreeSpace();
 	Position objectif;
 	objectif.posX = 24;
-	objectif.posY = 26;
+	objectif.posY = 24;
 	//this->m_ennemis.push_back(new Ennemi(1, posEnnemi.posX, posEnnemi.posY, skeleton));
-	this->m_ennemis.push_back(new Ennemi(1, 24, 24, skeleton, patrol, objectif));
+	this->m_ennemis.push_back(new Ennemi(1, objectif, skeleton, station, objectif));
 	//this->m_carte.setWalkable(posEnnemi.posX, posEnnemi.posY, 0);
+
+	for (size_t i = 0; i < 10; i++)
+	{
+		Position posEnnemi = this->m_carte.getRandomFreeSpace();
+		this->m_ennemis.push_back(new Ennemi(1, posEnnemi, skeleton, station, objectif));
+	}
 }
 
 void Database::displayAll()
@@ -126,7 +135,7 @@ void Database::displayCarte()
 void Database::FOV(int minX, int maxX, int minY, int maxY)
 {
 	m_visible.clear();
-
+	/*
 	Position posTemp;
 	std::vector<Position> lineRight;
 	std::vector<Position> lineDown;
@@ -372,7 +381,28 @@ void Database::FOV(int minX, int maxX, int minY, int maxY)
 			}
 		}
 	}
+	*/
 	
+Position tempPos;
+
+	for (int x = minX; x < maxX; x++)
+	{
+		for (int y = minY; y < maxY; y++)
+		{
+			tempPos.posX = x;
+			tempPos.posY = y;
+			if (this->m_carte.getDistance(tempPos, this->m_player.getPosition()) <= 7)
+			{
+				if (this->m_carte.lineOfSight(this->m_player.getPosition(), tempPos))
+				{
+					m_visible.push_back(tempPos);
+					displayTile(tempPos, false);
+					m_carte.m_matrix[tempPos.posX][tempPos.posY].setExplored(true);
+				}
+			}
+			
+		}
+	}
 	
 }
 
@@ -413,6 +443,21 @@ void Database::updateEnnemies()
 				this->m_ennemis[i]->getPosY() == this->m_visible[j].posY)
 			{
 				this->m_visibleEnnemies.push_back(this->m_ennemis[i]);
+
+				/////Temporary
+				if ((this->m_carte.getDistance(this->m_ennemis[i]->getPosition(), this->m_player.getPosition())) <= 4)
+				{
+					if (this->m_carte.lineOfSight(this->m_ennemis[i]->getPosition(), this->m_player.getPosition()))
+					{
+						this->m_ennemis[i]->setState(track);
+						this->m_ennemis[i]->setObjectif(this->m_player.getPosition());
+					}						
+					else if (this->m_ennemis[i]->getObjectif().posX == this->m_ennemis[i]->getPosition().posX &&
+								this->m_ennemis[i]->getObjectif().posY == this->m_ennemis[i]->getPosition().posY)
+						this->m_ennemis[i]->setState(alert);
+				}
+				else
+					this->m_ennemis[i]->setState(station);
 			}
 		}
 	}
@@ -430,6 +475,10 @@ bool Database::getInteraction(int x1, int y1)
 			return false;
 		}
 	}
+	if (x1 == this->m_player.getPosX() && y1 == this->m_player.getPosY())
+	{
+		return false;
+	}
 	return true;
 }
 
@@ -442,21 +491,21 @@ void Database::ennemiesMouvement()
 	Ennemi *tempEnnemi;
 
 	int xDiff, yDiff;
-	std::cout << "Ennemies Mouvement" << std::endl;
+	//std::cout << "Ennemies Mouvement" << std::endl;
 	for (int i = 0; i < this->m_ennemis.size(); i++)
 	{
 		tempEnnemi = this->m_ennemis[i];
 		switch (tempEnnemi->getState())
 		{
-		case patrol:
-			std::cout << "Ennemies Mouvement1" << std::endl;
+		case track:
+			//std::cout << "Ennemies Mouvement1" << std::endl;
 			tempPosition = tempEnnemi->getPosition();
 			tempObjectif = tempEnnemi->getObjectif();
 			xDiff = tempObjectif.posX - tempPosition.posX;
 			yDiff = tempObjectif.posY - tempPosition.posY;
 
 
-			std::cout << "xDiff" << xDiff << "yDiff" << yDiff << std::endl;
+			//std::cout << "xDiff" << xDiff << "yDiff" << yDiff << std::endl;
 
 			if (xDiff > 0)
 			{

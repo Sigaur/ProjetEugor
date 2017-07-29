@@ -1,29 +1,11 @@
-﻿  Ennemi.cpp
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\include\common.h(50): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\ennemi.cpp(20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  Database.cpp
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\include\common.h(50): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(224): warning C4018: '<': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(262): warning C4018: '<': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(300): warning C4018: '<': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(338): warning C4018: '<': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(391): warning C4018: '<': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(400): warning C4018: '<': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(408): warning C4018: '<': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(410): warning C4018: '<': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(423): warning C4018: '<': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(446): warning C4018: '<': signed/unsigned mismatch
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(439): warning C4101: 'tempPosInit': unreferenced local variable
-  Generating Code...
-  Compiling...
-  display.cpp
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\include\common.h(50): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\display.cpp(27): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\display.cpp(31): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\display.cpp(35): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  main.cpp
-  GameLoop.cpp
+﻿  Database.cpp
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\include\common.h(49): warning C4091: 'typedef ': ignored on left of 'Position' when no variable is declared
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(421): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(430): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(438): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(440): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(468): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(495): warning C4018: '<': signed/unsigned mismatch
+c:\users\seven_8\work\projeteugor\projectroguelikec++\projectroguelikec++\src\database.cpp(488): warning C4101: 'tempPosInit': unreferenced local variable
   ProjectRogueLikeC++.vcxproj -> C:\Users\Seven_8\Work\ProjetEugor\ProjectRogueLikeC++\Debug\ProjectRogueLikeC++.exe
   ProjectRogueLikeC++.vcxproj -> C:\Users\Seven_8\Work\ProjetEugor\ProjectRogueLikeC++\Debug\ProjectRogueLikeC++.pdb (Partial PDB)

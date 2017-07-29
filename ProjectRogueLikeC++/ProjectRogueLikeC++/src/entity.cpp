@@ -5,19 +5,27 @@ Entity::Entity()
 {
 	this->m_id = 0;
 	this->m_name = "UNAMED ENTITY";
-	this->m_posX = 0;
-	this->m_posX = 0;
+	this->m_pos.posX = 0;
+	this->m_pos.posY = 0;
 
 	this->m_view = 5;
 	this->m_type = unknowEntity;
 }
-
+/*
 Entity::Entity(int id, std::string name, int posX, int posY)
 {
 	this->m_id = id;
 	this->m_name = name;
-	this->m_posX = posX;
-	this->m_posY = posY;
+	this->m_pos.posX = posX;
+	this->m_pos.posY = posY;
+}
+*/
+
+Entity::Entity(int id, std::string name, Position pos)
+{
+	this->m_id = id;
+	this->m_name = name;
+	this->m_pos = pos;
 }
 
 Entity::~Entity()
@@ -32,21 +40,17 @@ entitiesType Entity::getType()
 
 int Entity::getPosX()
 {
-	return this->m_posX;
+	return this->m_pos.posX;
 }
 
 int Entity::getPosY()
 {
-	return this->m_posY;
+	return this->m_pos.posY;
 }
 
 Position Entity::getPosition()
 {
-	Position tempPosition;
-	tempPosition.posX = this->m_posX;
-	tempPosition.posY = this->m_posY;
-
-	return tempPosition;
+	return this->m_pos;
 }
 
 void Entity::setView(int view)
@@ -58,11 +62,16 @@ int Entity::getView()
 {
 	return this->m_view;
 }
-
+/*
 void Entity::setPos(int x, int y)
 {
-	this->m_posX = x;
-	this->m_posY = y;
+	this->m_pos.posX = x;
+	this->m_pos.posY = y;
+}
+*/
+void Entity::setPos(Position pos)
+{
+	this->m_pos = pos;
 }
 
 int Entity::getId()

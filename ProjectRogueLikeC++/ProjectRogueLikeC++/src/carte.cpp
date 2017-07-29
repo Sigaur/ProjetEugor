@@ -645,3 +645,118 @@ void Carte::setSize(int cols, int rows)
 	this->no_of_cols = cols;
 	this->no_of_rows = rows;
 }
+
+bool Carte::lineOfSight(Position posA, Position posB)//Attention no reproticity when tested = ?.5
+{
+	double dY = (double)(posB.posY - posA.posY);
+	dY *= dY;
+	double dX = (double)(posB.posX - posA.posX);
+	dX *= dX;
+
+	if (dY <= dX)
+	{
+		return lineOfSightHorizontal(posA, posB);
+	}
+	else if (dY > dX)
+	{
+		return lineOfSightVertical(posA, posB);
+	}
+	return false;
+}
+
+bool Carte::lineOfSightHorizontal(Position posA, Position posB)
+{
+	double dY = (double)(posB.posY - posA.posY);
+	double dX = (double)(posB.posX - posA.posX);
+	double slope = dY / dX;
+
+	double testY;
+	Position posTested;
+
+	int y;
+	int direction;
+
+	if (dX >= 0)
+	{
+		for (int i = posA.posX + 1; i < posB.posX; i++)
+		{
+			testY = (double)(slope * (i - posA.posX) + posA.posY);
+			y = std::round(testY);
+			if (!this->isSeeThr(i, y))
+			{
+				return false;
+			}
+		}
+	}
+	else
+	{
+		for (int i = posA.posX - 1; i > posB.posX; i--)
+		{
+			testY = (double)(slope * (i - posA.posX) + posA.posY);
+			y = std::round(testY);
+			if (!this->isSeeThr(i, y))
+			{
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+bool Carte::lineOfSightVertical(Position posA, Position posB)
+{
+	double dY = (double)(posB.posY - posA.posY);
+	double dX = (double)(posB.posX - posA.posX);
+	double slope = dX / dY;
+
+	double testX;
+	Position posTested;
+
+	int x;
+	int direction;
+
+	if (dY >= 0)
+	{
+		for (int i = posA.posY + 1; i < posB.posY; i++)
+		{
+			testX = (double)(slope * (i - posA.posY) + posA.posX);
+			x = std::round(testX);
+			if (!this->isSeeThr(x, i))
+			{
+				return false;
+			}
+		}
+	}
+	else
+	{
+		for (int i = posA.posY - 1; i > posB.posY; i--)
+		{
+			testX = (double)(slope * (i - posA.posY) + posA.posX);
+			x = std::round(testX);
+			if (!this->isSeeThr(x, i))
+			{
+				return false;
+			}
+		}
+	}
+
+
+	return true;
+}
+
+int Carte::getDistance(Position posA, Position posB)
+{
+	int retour = 0;
+
+	if (posB.posX > posA.posX)
+		retour += (posB.posX - posA.posX);
+	else
+		retour += (posA.posX - posB.posX);
+
+	if (posB.posY > posA.posY)
+		retour += (posB.posY - posA.posY);
+	else
+		retour += (posA.posY - posB.posY);
+
+	return retour;//Starting tile does not count
+}

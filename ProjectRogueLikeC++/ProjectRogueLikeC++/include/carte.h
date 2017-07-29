@@ -45,7 +45,14 @@ public:
 	void setSize(int cols, int rows);
 
 	void setWalkable(int x1, int y1, bool isWalkable);
+	
+	bool lineOfSight(Position posA, Position posB);//Is used to know if posA can si posB
+	int getDistance(Position posA, Position posB);//return the number of tiles beetween posA and posB
+
 private:
+	bool lineOfSightHorizontal(Position posA, Position posB);
+	bool lineOfSightVertical(Position posA, Position posB);
+
 	int no_of_cols;
 	int no_of_rows;
 	std::vector<Tile> wallConstructible;

@@ -10,7 +10,6 @@ GameLoop::GameLoop()
 	sf::FloatRect temp (0.25f, 0, 0.5f, 0.89f);
 	this->m_viewMap.setViewport(temp);
 	window.setView(m_viewMap);
-
 	this->refreshRate = 200;
 
 	this->m_database = Database();
@@ -252,7 +251,7 @@ std::string GameLoop::getMouvement()
 
 				//system("Pause");
 				tempPosition = this->m_database.m_carte.getPositionFromType(stairsUp);
-				this->m_database.m_player.setPos(tempPosition.posX, tempPosition.posY);
+				this->m_database.m_player.setPos(tempPosition);
 				setViewOnPlayer();
 			}
 		}//To be cleaned
@@ -292,7 +291,7 @@ std::string GameLoop::getMouvement()
 						this->m_database.m_carte.setExplored(this->m_database.m_explored[this->m_level]);
 					}
 					tempPosition = this->m_database.m_carte.getPositionFromType(stairsDown);
-					this->m_database.m_player.setPos(tempPosition.posX, tempPosition.posY);
+					this->m_database.m_player.setPos(tempPosition);
 					setViewOnPlayer();
 				}
 			}

@@ -5,13 +5,15 @@ class Entity
 {
 public:
 	Entity();
-	Entity(int id, std::string name, int posX, int posY);
+	//Entity(int id, std::string name, int posX, int posY);
+	Entity(int id, std::string name, Position pos);
 	~Entity();
 
 	int getPosX();
 	int getPosY();
 	Position getPosition();
-	void setPos(int x, int y);
+	//void setPos(int x, int y);
+	void setPos(Position pos);
 
 	int getId();
 	void setId(int id);
@@ -27,7 +29,9 @@ protected:
 	int m_view;
 	int m_id;
 	std::string m_name;
-	int m_posX;
-	int m_posY;
+	Position m_pos;
+
+	//int m_posX;
+	//int m_posY;
 };
 

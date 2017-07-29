@@ -120,17 +120,14 @@ void Display::entityDisplay(Ennemi ennemi)
 	default:
 		sprite.setTextureRect(this->rectUnknowEntity);
 		break;
-	case inactif:
+	case station:
 		sprite.setTextureRect(this->rectEnnemiInactif);
 		break;
-	case patrol:
-		sprite.setTextureRect(this->rectEnnemiPatrol);
-		break;
-	case defence:
+	case alert:
 		sprite.setTextureRect(this->rectEnnemiDefence);
 		break;
-	case seek:
-		sprite.setTextureRect(this->rectPlayer);
+	case track:
+		sprite.setTextureRect(this->rectEnnemiPatrol);
 		break;
 	}
 	window.draw(sprite);
@@ -146,17 +143,14 @@ void Display::entityDisplay(Ennemi* ennemi)
 	default:
 		sprite.setTextureRect(this->rectUnknowEntity);
 		break;
-	case inactif:
+	case station:
 		sprite.setTextureRect(this->rectEnnemiInactif);
 		break;
-	case patrol:
-		sprite.setTextureRect(this->rectEnnemiPatrol);
-		break;
-	case defence:
+	case alert:
 		sprite.setTextureRect(this->rectEnnemiDefence);
 		break;
-	case seek:
-		sprite.setTextureRect(this->rectPlayer);
+	case track:
+		sprite.setTextureRect(this->rectEnnemiPatrol);
 		break;
 	}
 	window.draw(sprite);

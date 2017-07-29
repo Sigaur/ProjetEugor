@@ -1,2 +1,40 @@
+-Review the code (who does what)
+	- Listing acces problems (like updates ennemies should be in database and not map)
+	- Solving them
+
+-Implementing the Position structure everywhere DOne
+
 -Put the updates ennemies and FOV of database.cpp into the updatesAll
--Asking if the tile can be walked must be asked to the database and not the map (interactions with the ennemies)
+
+-Adding a game logic class to the architecture? Or at least think about it. DONE, No Needs for Now
+
+-Thinking of a basic AI for ennemies DONE
+
+-Asking if the tile can be walked must be asked to the database and not the map (interactions with the ennemies) Sould be asked To map and not database for now
+
+-Implementing A Line Of Sight algo DONE
+
+-Implementing the Simple AI DONE
+	-Add dumb pathfinding DONE
+
+-switch FOV to a non square one WIP DONE
+-Fix : Use lOS for the field of vue of player DONE
+
+-Fix : ennemies does not track player after they does not see him anymore DONE
+
+//////////////////////////DONE//////////////////////////
+
+-Add infos in ennmies like sight distances
+
+-Add the possibility for ennemies to attack the player
+	-Ennemies have an attack methode
+	-Player have an health attribute and a take damage methode
+	-Link it with the AI module
+
+-Fix : ennemies are fighting each other
+
+-Use Position struct for get events
+
+/////////////////////TO SEE AFTER///////////////////////
+
+-Add A* pathFinding
